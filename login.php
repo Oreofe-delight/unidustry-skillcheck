@@ -1,52 +1,57 @@
 <?php
-session_start();
 include("includes/db.php");
 
 $message = "";
 
 if(isset($_POST['login'])){
 
-    $email_or_id = $_POST['email_or_id'];
-    $password = $_POST['password'];
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $message = "CSRF verification failed.";
+    } else {
+        $email_or_id = $_POST['email_or_id'];
+        $password = $_POST['password'];
 
-    $query = mysqli_query($conn,
+        $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE email = ? OR student_id = ?");
+        mysqli_stmt_bind_param($stmt, "ss", $email_or_id, $email_or_id);
+        mysqli_stmt_execute($stmt);
+        $query = mysqli_stmt_get_result($stmt);
 
-    "SELECT * FROM users
-    WHERE email='$email_or_id'
-    OR student_id='$email_or_id'");
+        if(mysqli_num_rows($query) > 0){
 
-    if(mysqli_num_rows($query) > 0){
+            $user = mysqli_fetch_assoc($query);
 
-        $user = mysqli_fetch_assoc($query);
+            if(password_verify($password, $user['password'])){
 
-        if(password_verify($password, $user['password'])){
+                // Regenerate session ID to prevent Session Fixation
+                session_regenerate_id(true);
 
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['role'] = $user['role'];
-            $_SESSION['fullname'] = $user['fullname'];
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['role'] = $user['role'];
+                $_SESSION['fullname'] = $user['fullname'];
 
-            if($user['role'] == 'admin'){
+                if($user['role'] == 'admin'){
 
-                header("Location: admin/dashboard.php");
+                    header("Location: admin/dashboard.php");
+
+                } else {
+
+                    header("Location: dashboard.php");
+
+                }
+
+                exit();
 
             } else {
 
-                header("Location: dashboard.php");
+                $message = "Incorrect Password";
 
             }
 
-            exit();
-
         } else {
 
-            $message = "Incorrect Password";
+            $message = "Account Not Found";
 
         }
-
-    } else {
-
-        $message = "Account Not Found";
-
     }
 }
 ?>
@@ -77,12 +82,13 @@ Login
 <?php if($message != ""){ ?>
 
 <div class="alert alert-danger">
-<?php echo $message; ?>
+<?php echo h($message); ?>
 </div>
 
 <?php } ?>
 
 <form method="POST">
+<input type="hidden" name="csrf_token" value="<?php echo h($_SESSION['csrf_token']); ?>">
 
 <input type="text"
 name="email_or_id"

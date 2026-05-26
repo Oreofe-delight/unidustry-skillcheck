@@ -5,64 +5,60 @@ $message = "";
 
 if (isset($_POST['register'])) {
 
-    $fullname = $_POST['fullname'];
-$email = $_POST['email'];
-$student_id = $_POST['student_id'];
-
-$phone = $_POST['phone'];
-$gender = $_POST['gender'];
-$dob = $_POST['dob'];
-
-$institution = $_POST['institution'];
-$faculty = $_POST['faculty'];
-$department = $_POST['department'];
-$level = $_POST['level'];
-
-$skills_interest = $_POST['skills_interest'];
-
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    $check = mysqli_query($conn, "SELECT * FROM users WHERE student_id='$student_id'");
-
-    if (mysqli_num_rows($check) > 0) {
-        $message = "User already exists!";
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $message = "CSRF verification failed.";
     } else {
+        $fullname = trim($_POST['fullname'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $student_id = trim($_POST['student_id'] ?? '');
 
-       mysqli_query($conn, "
-INSERT INTO users
-(
-fullname,
-email,
-student_id,
-phone,
-gender,
-dob,
-institution,
-faculty,
-department,
-level,
-skills_interest,
-password
-)
+        $phone = trim($_POST['phone'] ?? '');
+        $gender = trim($_POST['gender'] ?? '');
+        $dob = trim($_POST['dob'] ?? '');
 
-VALUES
-(
-'$fullname',
-'$email',
-'$student_id',
-'$phone',
-'$gender',
-'$dob',
-'$institution',
-'$faculty',
-'$department',
-'$level',
-'$skills_interest',
-'$password'
-)
-");
+        $institution = trim($_POST['institution'] ?? '');
+        $faculty = trim($_POST['faculty'] ?? '');
+        $department = trim($_POST['department'] ?? '');
+        $level = trim($_POST['level'] ?? '');
 
-        $message = "Registration successful!";
+        $skills_interest = trim($_POST['skills_interest'] ?? '');
+        $password_plain = $_POST['password'] ?? '';
+
+        if (empty($fullname) || empty($email) || empty($student_id) || empty($password_plain)) {
+            $message = "Please fill in all required fields.";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $message = "Invalid email format.";
+        } elseif (strlen($password_plain) < 8) {
+            $message = "Password must be at least 8 characters long.";
+        } else {
+            // Check if user already exists by student_id or email
+            $stmt = mysqli_prepare($conn, "SELECT id FROM users WHERE student_id = ? OR email = ?");
+            mysqli_stmt_bind_param($stmt, "ss", $student_id, $email);
+            mysqli_stmt_execute($stmt);
+            $check = mysqli_stmt_get_result($stmt);
+
+            if (mysqli_num_rows($check) > 0) {
+                $message = "User already exists with this Student ID or Email!";
+            } else {
+                $password = password_hash($password_plain, PASSWORD_DEFAULT);
+
+                $stmt_insert = mysqli_prepare($conn, "
+                    INSERT INTO users 
+                    (fullname, email, student_id, phone, gender, dob, institution, faculty, department, level, skills_interest, password) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ");
+                mysqli_stmt_bind_param($stmt_insert, "ssssssssssss", 
+                    $fullname, $email, $student_id, $phone, $gender, $dob, 
+                    $institution, $faculty, $department, $level, $skills_interest, $password
+                );
+
+                if (mysqli_stmt_execute($stmt_insert)) {
+                    $message = "Registration successful!";
+                } else {
+                    $message = "Error occurred during registration. Please try again.";
+                }
+            }
+        }
     }
 }
 ?>
@@ -96,10 +92,11 @@ body{
     </div>
 
     <?php if($message!=""){ ?>
-        <div class="alert alert-info"><?php echo $message; ?></div>
+        <div class="alert alert-info"><?php echo h($message); ?></div>
     <?php } ?>
 
     <form method="POST">
+        <input type="hidden" name="csrf_token" value="<?php echo h($_SESSION['csrf_token']); ?>">
 
         <input type="text" name="fullname" class="form-control mb-3" placeholder="Full Name" required>
         

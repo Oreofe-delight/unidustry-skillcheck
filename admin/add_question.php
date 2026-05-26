@@ -1,27 +1,35 @@
 <?php
-session_start();
-include("../includes/db.php");
-
-if(!isset($_SESSION['admin'])){
-    header("Location: login.php");
-}
+include("../includes/admin_auth.php");
 
 if(isset($_POST['submit'])){
 
-    $category = $_POST['category'];
-    $question = $_POST['question'];
-    $o1 = $_POST['o1'];
-    $o2 = $_POST['o2'];
-    $o3 = $_POST['o3'];
-    $o4 = $_POST['o4'];
-    $correct = $_POST['correct'];
-    $link = $_POST['link'];
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        echo "<script>alert('CSRF verification failed');</script>";
+    } else {
+        $category = $_POST['category'] ?? '';
+        $question = $_POST['question'] ?? '';
+        $o1 = $_POST['o1'] ?? '';
+        $o2 = $_POST['o2'] ?? '';
+        $o3 = $_POST['o3'] ?? '';
+        $o4 = $_POST['o4'] ?? '';
+        $correct = intval($_POST['correct'] ?? 0);
+        $link = $_POST['link'] ?? '';
 
-    mysqli_query($conn, "INSERT INTO questions 
-    (category, question, option1, option2, option3, option4, correct_option, resource_link)
-    VALUES ('$category','$question','$o1','$o2','$o3','$o4','$correct','$link')");
+        if (!empty($category) && !empty($question) && !empty($o1) && !empty($o2) && !empty($o3) && !empty($o4) && $correct >= 1 && $correct <= 4) {
+            $stmt = mysqli_prepare($conn, "INSERT INTO questions 
+            (category, question, option1, option2, option3, option4, correct_option, resource_link)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            mysqli_stmt_bind_param($stmt, "sssssiis", $category, $question, $o1, $o2, $o3, $o4, $correct, $link);
 
-    echo "<script>alert('Question added');</script>";
+            if (mysqli_stmt_execute($stmt)) {
+                echo "<script>alert('Question added');</script>";
+            } else {
+                echo "<script>alert('Failed to add question');</script>";
+            }
+        } else {
+            echo "<script>alert('Please fill in all fields correctly');</script>";
+        }
+    }
 }
 ?>
 
@@ -40,6 +48,7 @@ if(isset($_POST['submit'])){
 <h3>Add Question</h3>
 
 <form method="POST">
+<input type="hidden" name="csrf_token" value="<?php echo h($_SESSION['csrf_token']); ?>">
 
 <select name="category" class="form-control mb-3">
     <option value="technical">Technical</option>
