@@ -1,9 +1,20 @@
 <?php
-include("../includes/db.php");
+include("../includes/admin_auth.php");
 
-$id = $_GET['id'];
+if(isset($_GET['id'])){
 
-mysqli_query($conn, "DELETE FROM questions WHERE id='$id'");
+    $id = intval($_GET['id']);
+
+    $stmt = mysqli_prepare(
+    $conn,
+    "DELETE FROM questions WHERE id=?"
+    );
+
+    mysqli_stmt_bind_param($stmt,"i",$id);
+
+    mysqli_stmt_execute($stmt);
+}
 
 header("Location: manage_questions.php");
+exit();
 ?>

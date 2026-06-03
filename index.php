@@ -6,56 +6,10 @@
 
 <title>Unidustry SkillCheck</title>
 
+<link href="assets/css/style.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-<style>
-
-body{
-    font-family:'Poppins',sans-serif;
-}
-
-/* HERO */
-.hero{
-    background: linear-gradient(135deg,#4e54c8,#8f94fb);
-    color:white;
-    padding:80px 0;
-}
-
-.hero-logo{
-    height:150px;
-    width: ;
-    margin-bottom:5px;
-    filter: drop-shadow(0 0 15px rgba(0,212,255,0.8));
-}
-
-/* FEATURES */
-.feature-box{
-    text-align:center;
-    padding:20px;
-}
-
-/* CTA */
-.cta{
-    background:#4e54c8;
-    color:white;
-    padding:60px 0;
-}
-
-/* FOOTER */
-.footer{
-    background:#222;
-    color:white;
-    padding:20px;
-    text-align:center;
-}
-
-.btn-custom{
-    background:linear-gradient(90deg,#6a11cb,#2575fc);
-    color:white;
-}
-
-</style>
 </head>
 
 <body>
@@ -63,7 +17,7 @@ body{
 <!-- 🔹 HERO SECTION -->
 <!-- 🔹 HERO SECTION -->
 <!-- HERO SECTION -->
-<section class="hero">
+<section class="hero d-flex align-items-center">
 
 <div class="container">
 

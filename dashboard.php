@@ -13,78 +13,197 @@ include("includes/user_auth.php");
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 rel="stylesheet">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body>
 
-<div class="container py-5">
+<div class="dashboard-layout">
 
-<h2>
-Welcome,
-<?php echo $_SESSION['fullname']; ?>
-</h2>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-<div class="row mt-4">
+        <div class="sidebar-logo text-center">
 
-<div class="col-md-4 mb-4">
+            <img src="assets/images/logo-icon.png"
+            class="sidebar-img">
 
-<div class="card p-4">
+            <h4>SkillCheck</h4>
 
-<h4>Technical Test</h4>
+        </div>
 
-<a href="assessment/technical.php"
-class="btn btn-primary">
+        <div class="sidebar-links">
 
-Start
+            <a href="dashboard.php" class="active">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
 
-</a>
+            <a href="assessment/technical.php">
+                <i class="fas fa-code"></i>
+                Technical Test
+            </a>
 
-</div>
+            <a href="assessment/softskills.php">
+                <i class="fas fa-users"></i>
+                Soft Skills
+            </a>
 
-</div>
+            <a href="profile.php">
+                <i class="fas fa-user"></i>
+                Profile
+            </a>
 
-<div class="col-md-4 mb-4">
+            <a href="logout.php">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
 
-<div class="card p-4">
+        </div>
 
-<h4>Soft Skills</h4>
+    </aside>
 
-<a href="assessment/softskills.php"
-class="btn btn-success">
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
 
-Start
+        <!-- TOPBAR -->
+        <div class="topbar">
 
-</a>
+            <div>
 
-</div>
+                <h3>
+                    Welcome back,
+                    <?php echo h($_SESSION['fullname']); ?>
+                </h3>
 
-</div>
+                <p>
+                    Track your assessments and skill growth
+                </p>
 
-<div class="col-md-4 mb-4">
+            </div>
 
-<div class="card p-4">
+        </div>
 
-<h4>Profile</h4>
+        <!-- STATISTICS -->
+        <div class="container-fluid py-4">
 
-<a href="profile.php"
-class="btn btn-dark">
+            <div class="row g-4">
 
-View Profile
+                <div class="col-md-4">
 
-</a>
+                    <div class="stats-card">
 
-</div>
+                        <div>
+                            <h5>Technical Tests</h5>
+                            <h2>01</h2>
+                        </div>
 
-</div>
+                        <i class="fas fa-code"></i>
 
-</div>
+                    </div>
 
-<a href="logout.php"
-class="btn btn-danger">
+                </div>
 
-Logout
+                <div class="col-md-4">
 
-</a>
+                    <div class="stats-card">
+
+                        <div>
+                            <h5>Soft Skills Tests</h5>
+                            <h2>01</h2>
+                        </div>
+
+                        <i class="fas fa-users"></i>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="stats-card">
+
+                        <div>
+                            <h5>Profile Status</h5>
+                            <h2>100%</h2>
+                        </div>
+
+                        <i class="fas fa-user-check"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ASSESSMENT CARDS -->
+            <div class="row mt-4 g-4">
+
+                <div class="col-lg-6">
+
+                    <div class="dashboard-panel">
+
+                        <img src="assets/images/tech.png"
+                        class="panel-img">
+
+                        <h4>
+                            Technical Assessment
+                        </h4>
+
+                        <p>
+                            Evaluate coding, problem-solving,
+                            and technical reasoning skills.
+                        </p>
+
+                        <a href="assessment/technical.php"
+                        class="btn btn-custom">
+
+                        Start Assessment
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="dashboard-panel">
+
+                        <img src="assets/images/soft.png"
+                        class="panel-img">
+
+                        <h4>
+                            Soft Skills Assessment
+                        </h4>
+
+                        <p>
+                            Test communication, leadership,
+                            teamwork, and adaptability skills.
+                        </p>
+
+                        <a href="assessment/softskills.php"
+                        class="btn btn-custom">
+
+                        Start Assessment
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
 
 </div>
 

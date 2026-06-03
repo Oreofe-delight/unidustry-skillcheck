@@ -1,12 +1,18 @@
 <?php
 include("includes/user_auth.php");
 
-$user_id = $_SESSION['user_id'];
+$stmt = mysqli_prepare(
+$conn,
+"SELECT * FROM users WHERE id=?"
+);
 
-$query = mysqli_query($conn,
-"SELECT * FROM users WHERE id='$user_id'");
+mysqli_stmt_bind_param($stmt,"i",$user_id);
 
-$user = mysqli_fetch_assoc($query);
+mysqli_stmt_execute($stmt);
+
+$result = mysqli_stmt_get_result($stmt);
+
+$user = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
