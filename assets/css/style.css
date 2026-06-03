@@ -324,7 +324,14 @@ textarea:focus{
     margin-bottom:12px;
     font-size:15px;
 }
-
+.profile-avatar{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #6a11cb;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
 /* =========================
    RESPONSIVE
 ========================= */

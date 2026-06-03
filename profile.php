@@ -1,6 +1,8 @@
 <?php
 include("includes/user_auth.php");
 
+$user_id = $_SESSION['user_id'];
+
 $stmt = mysqli_prepare(
 $conn,
 "SELECT * FROM users WHERE id=?"
@@ -13,6 +15,10 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 $user = mysqli_fetch_assoc($result);
+
+if(!$user){
+    die("User profile not found.");
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,69 +40,106 @@ rel="stylesheet">
 
 <div class="card">
 
-<h2 class="mb-4 text-center">My Profile</h2>
+<h2 class="text-center mb-3">My Profile</h2>
+
+<?php
+$profile_image = !empty($user['profile_image'])
+    ? "uploads/profiles/" . $user['profile_image']
+    : "assets/images/devOreofe.jpg";
+?>
+
+<!-- PROFILE HEADER -->
+<div class="text-center mb-4">
+
+    <img src="<?php echo $profile_image; ?>"
+         class="profile-avatar">
+
+    <h4 class="mt-3 mb-0">
+        <?php echo h($user['fullname']); ?>
+    </h4>
+
+    <small class="text-muted">
+        <?php echo h($user['department']); ?>
+    </small>
+
+</div>
 
 <hr>
 
-<h4><?php echo $user['fullname']; ?></h4>
+<!-- PERSONAL INFO GRID -->
+<div class="row">
 
-<p>
-<strong>Email:</strong>
-<?php echo $user['email']; ?>
-</p>
+    <div class="col-md-6 mb-3">
+        <strong>Email</strong>
+        <div><?php echo h($user['email']); ?></div>
+    </div>
 
-<p>
-<strong>Student ID:</strong>
-<?php echo $user['student_id']; ?>
-</p>
+    <div class="col-md-6 mb-3">
+        <strong>Student ID</strong>
+        <div><?php echo h($user['student_id']); ?></div>
+    </div>
 
-<p>
-<strong>Phone:</strong>
-<?php echo $user['phone']; ?>
-</p>
+    <div class="col-md-6 mb-3">
+        <strong>Phone</strong>
+        <div><?php echo h($user['phone']); ?></div>
+    </div>
 
-<p>
-<strong>Gender:</strong>
-<?php echo $user['gender']; ?>
-</p>
+    <div class="col-md-6 mb-3">
+        <strong>Gender</strong>
+        <div><?php echo h($user['gender']); ?></div>
+    </div>
 
-<p>
-<strong>Date of Birth:</strong>
-<?php echo $user['dob']; ?>
-</p>
+    <div class="col-md-6 mb-3">
+        <strong>Date of Birth</strong>
+        <div><?php echo h($user['dob']); ?></div>
+    </div>
+
+</div>
 
 <hr>
 
-<h5>Academic Information</h5>
+<!-- ACADEMIC INFO -->
+<h5 class="mb-3">Academic Information</h5>
 
-<p>
-<strong>Institution:</strong>
-<?php echo $user['institution']; ?>
-</p>
+<div class="row">
 
-<p>
-<strong>Faculty:</strong>
-<?php echo $user['faculty']; ?>
-</p>
+    <div class="col-md-6 mb-3">
+        <strong>Institution</strong>
+        <div><?php echo h($user['institution']); ?></div>
+    </div>
 
-<p>
-<strong>Department:</strong>
-<?php echo $user['department']; ?>
-</p>
+    <div class="col-md-6 mb-3">
+        <strong>Faculty</strong>
+        <div><?php echo h($user['faculty']); ?></div>
+    </div>
 
-<p>
-<strong>Level:</strong>
-<?php echo $user['level']; ?>
-</p>
+    <div class="col-md-6 mb-3">
+        <strong>Department</strong>
+        <div><?php echo h($user['department']); ?></div>
+    </div>
 
-<p>
-<strong>Skill Interests:</strong>
-<?php echo $user['skills_interest']; ?>
-</p>
+    <div class="col-md-6 mb-3">
+        <strong>Level</strong>
+        <div><?php echo h($user['level']); ?></div>
+    </div>
+
+</div>
+
+<hr>
+
+<!-- SKILLS -->
+<div class="mb-3">
+    <strong>Skill Interests</strong>
+    <p class="mt-1">
+        <?php echo h($user['skills_interest']); ?>
+    </p>
+</div>
 
 <a href="dashboard.php"
-class="btn btn-custom w-100 mt-3">
+   class="btn btn-custom w-100 mt-2">
+
 Back to Dashboard
+
 </a>
 
 </div>
