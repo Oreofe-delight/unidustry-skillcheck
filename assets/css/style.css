@@ -211,18 +211,19 @@ body::before{
 
     background:
         linear-gradient(
-            rgba(71, 61, 255, 0.55),
-            rgba(110, 125, 255, 0.55)
+            rgba(78,84,200,0.55),
+            rgba(143,148,251,0.55)
         ),
         url('../images/login-bg.png');
 
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-
-    padding:30px;
 }
-
+.register-card{
+    width:80%;
+    max-width:1200px;
+}
 .card{
     width:100%;
     max-width:500px;

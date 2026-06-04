@@ -75,9 +75,17 @@ rel="stylesheet">
 
 <div class="card">
 
-<h2 class="text-center mb-4">
-Login
-</h2>
+<div class="text-center mb-4">
+
+    <img src="assets/images/logo-full.png"
+         alt="SkillCheck Logo"
+         style="height:80px;">
+
+    <h2 class="mt-2">
+        Login
+    </h2>
+
+</div>
 
 <?php if($message != ""){ ?>
 

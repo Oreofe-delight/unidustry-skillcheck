@@ -84,10 +84,9 @@ body{
 
 <div class="container d-flex justify-content-center align-items-center vh-100">
 
-<div class="card p-4 shadow" style="width:400px;">
-
+<div class="card p-5 shadow register-card">
     <div class="text-center mb-3">
-        <img src="assets/images/logoa.png" style="height:60px;">
+        <img src="assets/images/logo-full.png" style="height:60px;">
         <h4>Register</h4>
     </div>
 
@@ -96,14 +95,24 @@ body{
     <?php } ?>
 
     <form method="POST">
+        <div class="row">
+         <div class="col-md-6 mb-3">   
         <input type="hidden" name="csrf_token" value="<?php echo h($_SESSION['csrf_token']); ?>">
+        </div>
 
+        <div class="col-md-6 mb-3">  
         <input type="text" name="fullname" class="form-control mb-3" placeholder="Full Name" required>
-        
+        </div>
+
+        <div class="col-md-6 mb-3">
         <input type="email" name="email" class="form-control mb-3" placeholder="Email Address" required>
+        </div>
         
+        <div class="col-md-6 mb-3">
         <input type="text" name="student_id" class="form-control mb-3" placeholder="Student ID" required>
-        
+        </div>
+
+        <div class="col-md-6 mb-3">
         <input type="text" name="phone" class="form-control mb-3" placeholder="Phone Number">
         
         <select name="gender" class="form-control mb-3">
@@ -144,7 +153,7 @@ placeholder="Password" required>
     <p class="text-center mt-3">
         Already have an account? <a href="login.php">Login</a>
     </p>
-
+</div>
 </div>
 
 </div>
