@@ -126,26 +126,17 @@ body::before{
 
 .btn-custom{
     background:linear-gradient(
-    90deg,
-    #6a11cb,
-    #2575fc
+        90deg,
+        #7b1fe4,
+        #2d73ff
     );
-
-    color:white;
-
     border:none;
-
-    border-radius:12px;
-
-    padding:12px 28px;
-
+    color:white;
     font-weight:600;
-
-    transition:0.3s;
+    padding:12px;
 }
 
 .btn-custom:hover{
-    transform:translateY(-2px);
     opacity:0.95;
     color:white;
 }
@@ -214,34 +205,37 @@ body::before{
 
 .auth-wrapper{
     min-height:100vh;
-
     display:flex;
     justify-content:center;
     align-items:center;
 
-    padding:40px 15px;
-
     background:
-    linear-gradient(
-    135deg,
-    #4e54c8,
-    #8f94fb
-    );
+        linear-gradient(
+            rgba(71, 61, 255, 0.55),
+            rgba(110, 125, 255, 0.55)
+        ),
+        url('../images/login-bg.png');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    padding:30px;
 }
 
 .card{
     width:100%;
-    max-width:520px;
+    max-width:500px;
 
     border:none;
-    border-radius:24px;
+    border-radius:20px;
 
-    padding:45px;
+    background:rgba(255,255,255,0.92);
 
-    background:white;
+    backdrop-filter:blur(8px);
 
-    box-shadow:
-    0 25px 60px rgba(0,0,0,0.18);
+    padding:40px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.15);
 }
 
 .auth-logo{
