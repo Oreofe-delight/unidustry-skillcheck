@@ -148,6 +148,7 @@ body{
         <option>300 Level</option>
         <option>400 Level</option>
         <option>500 Level</option>
+        <option>Graduate</option>
         </select>
         </div>
 

@@ -531,19 +531,18 @@ textarea:focus{
 
 /* QUESTION */
 .question{
-
-    margin-bottom:35px;
-
+    margin-bottom:30px;
 }
 
-.question p{
-
+.question-title{
     font-size:20px;
-
     font-weight:600;
-
+    margin-bottom:15px;
 }
 
+input[type="radio"]{
+    margin-right:8px;
+}
 /* RESPONSIVE */
 
 @media(max-width:991px){

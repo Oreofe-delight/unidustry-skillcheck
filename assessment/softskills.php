@@ -40,7 +40,7 @@ $count++;
 
 <input type="hidden" name="total" value="<?php echo $count; ?>">
 
-<button class="btn btn-custom w-100">Submit Test</button>
+<button class="btn btn-custom w-100 text-white">Submit Test</button>
 
 </form>
 
