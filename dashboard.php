@@ -28,13 +28,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
+        <button id="menu-toggle" class="hamburger">
+            ☰
+        </button>
 
         <div class="sidebar-logo text-center">
 
             <img src="assets/images/logo-icon.png"
             class="sidebar-img">
 
-            <h4>SkillCheck</h4>
+            <h4>Unidustry SkillCheck</h4>
 
         </div>
 
@@ -162,7 +165,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
                         </p>
 
                         <a href="assessment/technical.php"
-                        class="btn btn-custom">
+                        class="btn btn-custom text-white">
 
                         Start Assessment
 
@@ -189,7 +192,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
                         </p>
 
                         <a href="assessment/softskills.php"
-                        class="btn btn-custom">
+                        class="btn btn-custom text-white">
 
                         Start Assessment
 
@@ -206,6 +209,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     </main>
 
 </div>
+
+<script>
+
+const menuBtn =
+document.getElementById("menu-toggle");
+
+const sidebar =
+document.querySelector(".sidebar");
+
+menuBtn.addEventListener("click", ()=>{
+
+    sidebar.classList.toggle("active");
+
+});
+
+</script>
 
 </body>
 </html>

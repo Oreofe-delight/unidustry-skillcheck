@@ -124,6 +124,7 @@ body::before{
    BUTTONS
 ========================= */
 
+
 .btn-custom{
     background:linear-gradient(
         90deg,
@@ -223,20 +224,6 @@ body::before{
 .register-card{
     width:80%;
     max-width:1200px;
-}
-.card{
-    width:100%;
-    max-width:500px;
-
-    border:none;
-    border-radius:20px;
-
-    background:rgba(255,255,255,0.92);
-
-    backdrop-filter:blur(8px);
-
-    padding:40px;
-    box-shadow:0 10px 35px rgba(0,0,0,0.15);
 }
 
 .auth-logo{
@@ -421,6 +408,26 @@ textarea:focus{
     background:rgba(255,255,255,0.15);
 }
 
+.hamburger{
+    display:none;
+    position:fixed;
+    top:15px;
+    left:15px;
+    z-index:1001;
+
+    background:#fff;
+    border:none;
+
+    width:45px;
+    height:45px;
+
+    border-radius:10px;
+
+    font-size:24px;
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
 /* MAIN CONTENT */
 
 .main-content{
@@ -522,6 +529,21 @@ textarea:focus{
     line-height:1.7;
 }
 
+/* QUESTION */
+.question{
+
+    margin-bottom:35px;
+
+}
+
+.question p{
+
+    font-size:20px;
+
+    font-weight:600;
+
+}
+
 /* RESPONSIVE */
 
 @media(max-width:991px){
@@ -540,4 +562,36 @@ textarea:focus{
         flex-direction:column;
     }
 
+}
+@media(max-width:768px){
+
+    .hamburger{
+        display:block;
+    }
+
+    .sidebar{
+
+        position:fixed;
+
+        left:-260px;
+
+        top:0;
+
+        width:250px;
+
+        height:100vh;
+
+        transition:.3s ease;
+
+        z-index:1000;
+    }
+
+    .sidebar.active{
+        left:0;
+    }
+
+    .main-content{
+        margin-left:0 !important;
+        width:100%;
+    }
 }

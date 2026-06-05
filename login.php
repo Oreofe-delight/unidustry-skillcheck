@@ -111,7 +111,7 @@ placeholder="Password"
 required>
 
 <button name="login"
-class="btn btn-custom w-100">
+class="btn btn-custom w-100 text-white">
 
 Login
 

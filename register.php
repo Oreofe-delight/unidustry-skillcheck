@@ -114,37 +114,51 @@ body{
 
         <div class="col-md-6 mb-3">
         <input type="text" name="phone" class="form-control mb-3" placeholder="Phone Number">
-        
+        </div>
+
+        <div class="col-md-6 mb-3">
         <select name="gender" class="form-control mb-3">
-            
         <option value="">Select Gender</option>
         <option>Male</option>
         <option>Female</option>
         </select>
+        </div>
         
+        <div class="col-md-6 mb-3">
         <input type="date" name="dob" class="form-control mb-3">
-
+        </div>
+        
+        <div class="col-md-6 mb-3">
         <input type="text" name="institution" class="form-control mb-3" placeholder="Institution">
+        </div>
 
-<input type="text" name="faculty" class="form-control mb-3" placeholder="Faculty">
+        <div class="col-md-6 mb-3">
+        <input type="text" name="faculty" class="form-control mb-3" placeholder="Faculty">
+        </div>
 
-<input type="text" name="department" class="form-control mb-3" placeholder="Department">
+        <div class="col-md-6 mb-3">
+        <input type="text" name="department" class="form-control mb-3" placeholder="Department">
+        </div>
 
-<select name="level" class="form-control mb-3">
-    <option value="">Select Level</option>
-    <option>100 Level</option>
-    <option>200 Level</option>
-    <option>300 Level</option>
-    <option>400 Level</option>
-    <option>500 Level</option>
-</select>
+        <div class="col-md-6 mb-3">
+        <select name="level" class="form-control mb-3">
+        <option value="">Select Level</option>
+        <option>100 Level</option>
+        <option>200 Level</option>
+        <option>300 Level</option>
+        <option>400 Level</option>
+        <option>500 Level</option>
+        </select>
+        </div>
 
-<textarea name="skills_interest" class="form-control mb-3"
-placeholder="Skills/Tech Interests"></textarea>
+        <div class="col-md-6 mb-3">
+        <textarea name="skills_interest" class="form-control mb-3"
+        placeholder="Skills/Tech Interests"></textarea>
+        </div>
 
-<input type="password" name="password"
-class="form-control mb-3"
-placeholder="Password" required>
+        <div class="col-md-6 mb-3">
+        <input type="password" name="password"  class="form-control mb-3"placeholder="Password" required>
+        </div>
 
         <button name="register" class="btn btn-success w-100">Register</button>
 
