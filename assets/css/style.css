@@ -221,6 +221,26 @@ body::before{
     background-position:center;
     background-repeat:no-repeat;
 }
+
+.card{
+
+    width:90%;
+    max-width:1000px;
+
+    border:none;
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.95);
+
+    backdrop-filter:blur(10px);
+
+    padding:40px;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.15);
+
+}
+
 .register-card{
     width:80%;
     max-width:1200px;
@@ -236,6 +256,36 @@ body::before{
 .card h4{
     font-weight:700;
     color:#1e293b;
+}
+
+/*ASSESSMENT*/
+.assessment-card{
+    width:95%;
+    max-width:1200px;
+
+    border:none;
+    border-radius:25px;
+
+    background:rgba(255,255,255,.95);
+
+    padding:50px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.18);
+}
+
+.assessment-page{
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        rgba(78,84,200,.75),
+        rgba(108,99,255,.75)
+    ),
+    url('../images/assessment-bg.jpg');
+
+    background-size:cover;
+    background-position:center;
 }
 
 /* =========================
@@ -401,6 +451,21 @@ textarea:focus{
     margin-bottom:12px;
 
     transition:0.3s;
+}
+
+#sidebar-overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.4);
+
+    display:none;
+
+    z-index:999;
+}
+
+#sidebar-overlay.active{
+    display:block;
 }
 
 .sidebar-links a:hover,

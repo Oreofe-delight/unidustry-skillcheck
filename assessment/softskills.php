@@ -12,10 +12,10 @@ $result = mysqli_query($conn, "SELECT * FROM questions WHERE category='softskill
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="assessment-page">
 
 <div class="auth-wrapper">
-<div class="card">
+<div class="card assessment-card">
 
 <h4 class="mb-4">Soft Skills Assessment</h4>
 

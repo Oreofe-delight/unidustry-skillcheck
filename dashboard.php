@@ -26,11 +26,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <div class="dashboard-layout">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+        <!-- MOBILE MENU BUTTON -->
         <button id="menu-toggle" class="hamburger">
             ☰
         </button>
+
+            <!-- SIDEBAR -->
+        <div class="sidebar-overlay"></div>
+        <aside class="sidebar">
 
         <div class="sidebar-logo text-center">
 
@@ -212,15 +215,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <script>
 
-const menuBtn =
-document.getElementById("menu-toggle");
+const menuBtn = document.getElementById("menu-toggle");
+const sidebar = document.querySelector(".sidebar");
+const overlay = document.getElementById("sidebar-overlay");
 
-const sidebar =
-document.querySelector(".sidebar");
-
-menuBtn.addEventListener("click", ()=>{
+menuBtn.addEventListener("click", function(){
 
     sidebar.classList.toggle("active");
+    overlay.classList.toggle("active");
+
+});
+
+overlay.addEventListener("click", function(){
+
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
 
 });
 

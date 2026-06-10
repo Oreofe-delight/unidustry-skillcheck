@@ -13,7 +13,7 @@ $result = mysqli_query($conn, "SELECT * FROM questions WHERE category='$category
 while($row = mysqli_fetch_assoc($result)){
 
     $qid = $row['id'];
-    $correct = $row['correct_option'];
+    $correct = $row['correct_answer'];
 
     $selected = isset($_POST["q$qid"]) ? $_POST["q$qid"] : 0;
 
@@ -29,8 +29,26 @@ while($row = mysqli_fetch_assoc($result)){
     VALUES ('$user_id','$qid','$selected','$correct','$is_correct')");
 }
 
-mysqli_query($conn, "INSERT INTO results (user_id, category, score, total)
-VALUES ('$user_id','$category','$score','$total')");
+$percentage = ($score / $total) * 100;
+
+mysqli_query($conn,"
+INSERT INTO results
+(
+user_id,
+category,
+score,
+total_questions,
+percentage
+)
+VALUES
+(
+'$user_id',
+'$category',
+'$score',
+'$total',
+'$percentage'
+)
+");
 
 $_SESSION['score'] = $score;
 $_SESSION['total'] = $total;
