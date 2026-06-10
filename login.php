@@ -73,7 +73,7 @@ rel="stylesheet">
 
 <div class="auth-wrapper">
 
-<div class="card">
+<div class="auth-card">
 
 <div class="text-center mb-4">
 

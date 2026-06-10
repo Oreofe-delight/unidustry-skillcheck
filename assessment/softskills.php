@@ -15,7 +15,7 @@ $result = mysqli_query($conn, "SELECT * FROM questions WHERE category='softskill
 <body class="assessment-page">
 
 <div class="auth-wrapper">
-<div class="card assessment-card">
+<div class="assessment-card">
 
 <h4 class="mb-4">Soft Skills Assessment</h4>
 

@@ -1,9 +1,11 @@
 <?php
-include("../includes/admin_auth.php");
+include("includes/admin_auth.php");
 
-$result = mysqli_query(
+$questions =
+mysqli_query(
 $conn,
-"SELECT * FROM questions ORDER BY id DESC"
+"SELECT * FROM questions
+ORDER BY id DESC"
 );
 ?>
 
@@ -24,18 +26,7 @@ rel="stylesheet">
 
 <div class="container py-5">
 
-<div class="d-flex justify-content-between mb-4">
-
 <h2>Manage Questions</h2>
-
-<a href="add_question.php"
-class="btn btn-success">
-
-Add Question
-
-</a>
-
-</div>
 
 <table class="table table-bordered">
 
@@ -46,7 +37,8 @@ Add Question
 <th>ID</th>
 <th>Category</th>
 <th>Question</th>
-<th>Actions</th>
+<th>Correct</th>
+<th>Action</th>
 
 </tr>
 
@@ -54,27 +46,30 @@ Add Question
 
 <tbody>
 
-<?php while($row = mysqli_fetch_assoc($result)){ ?>
+<?php while($row=mysqli_fetch_assoc($questions)){ ?>
 
 <tr>
 
 <td><?php echo $row['id']; ?></td>
 
-<td><?php echo $row['category']; ?></td>
+<td>
+<?php echo $row['category']; ?>
+</td>
 
-<td><?php echo h($row['question']); ?></td>
+<td>
+<?php echo $row['question']; ?>
+</td>
+
+<td>
+<?php echo $row['correct_answer']; ?>
+</td>
 
 <td>
 
-<a href="edit_question.php?id=<?php echo $row['id']; ?>"
-class="btn btn-primary btn-sm">
-
-Edit
-
-</a>
-
-<a href="delete_question.php?id=<?php echo $row['id']; ?>"
-class="btn btn-danger btn-sm">
+<a
+href="delete_question.php?id=<?php echo $row['id']; ?>"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete Question?')">
 
 Delete
 
@@ -91,6 +86,5 @@ Delete
 </table>
 
 </div>
-
 </body>
 </html>

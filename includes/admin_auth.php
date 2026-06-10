@@ -1,13 +1,18 @@
 <?php
-include_once __DIR__ . "/db.php";
 
-if (
-    !isset($_SESSION['user_id'])
-    ||
-    $_SESSION['role'] != 'admin'
-) {
-    $redirect_path = file_exists("login.php") ? "login.php" : "../login.php";
-    header("Location: " . $redirect_path);
+session_start();
+
+include("../../includes/db.php");
+
+if(!isset($_SESSION['user_id'])){
+
+    header("Location: ../login.php");
+    exit();
+}
+
+if($_SESSION['role'] != 'admin'){
+
+    header("Location: ../dashboard.php");
     exit();
 }
 ?>

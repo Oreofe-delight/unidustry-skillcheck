@@ -1,77 +1,227 @@
 <?php
-include("../includes/admin_auth.php");
+include("includes/admin_auth.php");
 
-if(isset($_POST['submit'])){
+$message="";
 
-    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-        echo "<script>alert('CSRF verification failed');</script>";
-    } else {
-        $category = $_POST['category'] ?? '';
-        $question = $_POST['question'] ?? '';
-        $o1 = $_POST['o1'] ?? '';
-        $o2 = $_POST['o2'] ?? '';
-        $o3 = $_POST['o3'] ?? '';
-        $o4 = $_POST['o4'] ?? '';
-        $correct = intval($_POST['correct'] ?? 0);
-        $link = $_POST['link'] ?? '';
+if(isset($_POST['save'])){
 
-        if (!empty($category) && !empty($question) && !empty($o1) && !empty($o2) && !empty($o3) && !empty($o4) && $correct >= 1 && $correct <= 4) {
-            $stmt = mysqli_prepare($conn, "INSERT INTO questions 
-            (category, question, option1, option2, option3, option4, correct_option, resource_link)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            mysqli_stmt_bind_param($stmt, "sssssiis", $category, $question, $o1, $o2, $o3, $o4, $correct, $link);
+$category = $_POST['category'];
+$question = $_POST['question'];
 
-            if (mysqli_stmt_execute($stmt)) {
-                echo "<script>alert('Question added');</script>";
-            } else {
-                echo "<script>alert('Failed to add question');</script>";
-            }
-        } else {
-            echo "<script>alert('Please fill in all fields correctly');</script>";
-        }
-    }
+$option1 = $_POST['option1'];
+$option2 = $_POST['option2'];
+$option3 = $_POST['option3'];
+$option4 = $_POST['option4'];
+
+$correct_answer =
+$_POST['correct_answer'];
+
+$recommendation_type =
+$_POST['recommendation_type'];
+
+$recommendation_title =
+$_POST['recommendation_title'];
+
+$recommendation_link =
+$_POST['recommendation_link'];
+
+$stmt = mysqli_prepare(
+$conn,
+"INSERT INTO questions
+(category,question,
+option1,option2,option3,option4,
+correct_answer,
+recommendation_type,
+recommendation_title,
+recommendation_link)
+VALUES
+(?,?,?,?,?,?,?,?,?,?)"
+);
+
+mysqli_stmt_bind_param(
+$stmt,
+"ssssssisss",
+$category,
+$question,
+$option1,
+$option2,
+$option3,
+$option4,
+$correct_answer,
+$recommendation_type,
+$recommendation_title,
+$recommendation_link
+);
+
+mysqli_stmt_execute($stmt);
+
+$message="Question Added Successfully";
 }
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Add Question</title>
-<link href="../assets/css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Question</title>
+    <link href="../assets/css/style.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 </head>
-
 <body>
+    <div class="container py-5">
 
-<div class="auth-wrapper">
-<div class="card">
+<h2>Add Question</h2>
 
-<h3>Add Question</h3>
+<?php if($message!=""){ ?>
+
+<div class="alert alert-success">
+<?php echo $message; ?>
+</div>
+
+<?php } ?>
 
 <form method="POST">
-<input type="hidden" name="csrf_token" value="<?php echo h($_SESSION['csrf_token']); ?>">
 
-<select name="category" class="form-control mb-3">
-    <option value="technical">Technical</option>
-    <option value="softskills">Soft Skills</option>
+<div class="mb-3">
+
+<label>Category</label>
+
+<select
+name="category"
+class="form-select">
+
+<option value="technical">
+Technical
+</option>
+
+<option value="softskills">
+Soft Skills
+</option>
+
 </select>
 
-<textarea name="question" class="form-control mb-3" placeholder="Enter question"></textarea>
+</div>
 
-<input type="text" name="o1" class="form-control mb-2" placeholder="Option 1">
-<input type="text" name="o2" class="form-control mb-2" placeholder="Option 2">
-<input type="text" name="o3" class="form-control mb-2" placeholder="Option 3">
-<input type="text" name="o4" class="form-control mb-2" placeholder="Option 4">
+<div class="mb-3">
 
-<input type="number" name="correct" class="form-control mb-3" placeholder="Correct option (1-4)">
+<label>Question</label>
 
-<input type="text" name="link" class="form-control mb-3" placeholder="Resource link">
+<textarea
+name="question"
+class="form-control"
+required></textarea>
 
-<button name="submit" class="btn btn-custom w-100">Add Question</button>
+</div>
+
+<div class="mb-3">
+<label>Option 1</label>
+<input type="text"
+name="option1"
+class="form-control"
+required>
+</div>
+
+<div class="mb-3">
+<label>Option 2</label>
+<input type="text"
+name="option2"
+class="form-control"
+required>
+</div>
+
+<div class="mb-3">
+<label>Option 3</label>
+<input type="text"
+name="option3"
+class="form-control"
+required>
+</div>
+
+<div class="mb-3">
+<label>Option 4</label>
+<input type="text"
+name="option4"
+class="form-control"
+required>
+</div>
+
+<div class="mb-3">
+
+<label>Correct Answer</label>
+
+<select
+name="correct_answer"
+class="form-select">
+
+<option value="1">Option 1</option>
+<option value="2">Option 2</option>
+<option value="3">Option 3</option>
+<option value="4">Option 4</option>
+
+</select>
+
+</div>
+
+<hr>
+
+<h5>Learning Recommendation</h5>
+
+<div class="mb-3">
+
+<label>Resource Type</label>
+
+<select
+name="recommendation_type"
+class="form-select">
+
+<option value="youtube">
+YouTube
+</option>
+
+<option value="w3schools">
+W3Schools
+</option>
+
+<option value="freecodecamp">
+FreeCodeCamp
+</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Resource Title</label>
+
+<input type="text"
+name="recommendation_title"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Resource Link</label>
+
+<input type="url"
+name="recommendation_link"
+class="form-control">
+
+</div>
+
+<button
+name="save"
+class="btn btn-custom">
+
+Save Question
+
+</button>
 
 </form>
 
 </div>
-</div>
-
 </body>
 </html>
