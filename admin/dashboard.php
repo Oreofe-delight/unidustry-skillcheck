@@ -97,10 +97,9 @@ Logout
 
 </div>
 
-<div class="container-fluid py-4">
-
-<div class="row g-4">
-
+<div class="container py-4 dashboard-container">
+<div class="row g-4 justify-content-center">
+    
 <div class="col-md-4">
 <div class="stats-card">
 <div>
@@ -111,7 +110,7 @@ Logout
 </div>
 <div class="row mt-5 g-4">
 
-    <div class="col-lg-3">
+    <div class="col-lg-6">
 
         <div class="dashboard-panel">
 
@@ -134,7 +133,7 @@ Logout
 
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-6">
 
         <div class="dashboard-panel">
 
@@ -157,7 +156,7 @@ Logout
 
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-6">
 
         <div class="dashboard-panel">
 
@@ -180,7 +179,7 @@ Logout
 
     </div>
 
-       <div class="col-lg-3">
+       <div class="col-lg-6">
 
         <div class="dashboard-panel">
 
