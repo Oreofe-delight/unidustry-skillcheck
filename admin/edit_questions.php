@@ -1,12 +1,20 @@
 <?php
 include(__DIR__ . "/../includes/admin_auth.php");
 
-$message = "";
+$id = intval($_GET['id']);
 
-if(isset($_POST['add_question'])){
+$query =
+mysqli_query(
+$conn,
+"SELECT * FROM questions WHERE id='$id'"
+);
+
+$question = mysqli_fetch_assoc($query);
+
+if(isset($_POST['update_question'])){
 
     $category = $_POST['category'];
-    $question = $_POST['question'];
+    $question_text = $_POST['question'];
 
     $option1 = $_POST['option1'];
     $option2 = $_POST['option2'];
@@ -19,42 +27,28 @@ if(isset($_POST['add_question'])){
     $recommendation_title = $_POST['recommendation_title'];
     $recommendation_link = $_POST['recommendation_link'];
 
-    $stmt = mysqli_prepare(
-        $conn,
-        "INSERT INTO questions
-        (
-            category,
-            question,
-            option1,
-            option2,
-            option3,
-            option4,
-            correct_answer,
-            recommendation_type,
-            recommendation_title,
-            recommendation_link
-        )
-        VALUES(?,?,?,?,?,?,?,?,?,?)"
-    );
+    mysqli_query($conn,"
+    UPDATE questions SET
 
-    mysqli_stmt_bind_param(
-        $stmt,
-        "ssssssisss",
-        $category,
-        $question,
-        $option1,
-        $option2,
-        $option3,
-        $option4,
-        $correct_answer,
-        $recommendation_type,
-        $recommendation_title,
-        $recommendation_link
-    );
+    category='$category',
+    question='$question_text',
 
-    mysqli_stmt_execute($stmt);
+    option1='$option1',
+    option2='$option2',
+    option3='$option3',
+    option4='$option4',
 
-    $message = "Question added successfully";
+    correct_answer='$correct_answer',
+
+    recommendation_type='$recommendation_type',
+    recommendation_title='$recommendation_title',
+    recommendation_link='$recommendation_link'
+
+    WHERE id='$id'
+    ");
+
+    header("Location: manage_questions.php");
+    exit();
 }
 ?>
 
@@ -62,74 +56,101 @@ if(isset($_POST['add_question'])){
 <html>
 <head>
 
-<title>Add Question</title>
+<title>Edit Question</title>
 
 <link href="../assets/css/style.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
-
 <body>
 
 <div class="container py-5">
 
-<h2 class="mb-4">Add Question</h2>
-
-<?php if($message){ ?>
-<div class="alert alert-success">
-    <?php echo $message; ?>
-</div>
-<?php } ?>
+<h2>Edit Question</h2>
 
 <form method="POST">
 
 <div class="mb-3">
+
 <label>Category</label>
 
-<select name="category" class="form-select" required>
+<select name="category" class="form-select">
 
-<option value="technical">Technical</option>
+<option value="technical"
+<?php if($question['category']=="technical") echo "selected"; ?>>
+Technical
+</option>
 
-<option value="softskills">Soft Skills</option>
+<option value="softskills"
+<?php if($question['category']=="softskills") echo "selected"; ?>>
+Soft Skills
+</option>
 
 </select>
 
 </div>
 
 <div class="mb-3">
+
 <label>Question</label>
 
 <textarea
 name="question"
 class="form-control"
-required></textarea>
+required><?php echo $question['question']; ?></textarea>
 
 </div>
 
 <div class="mb-3">
+
 <label>Option 1</label>
-<input type="text" name="option1" class="form-control" required>
+
+<input type="text"
+name="option1"
+value="<?php echo $question['option1']; ?>"
+class="form-control">
+
 </div>
 
 <div class="mb-3">
+
 <label>Option 2</label>
-<input type="text" name="option2" class="form-control" required>
+
+<input type="text"
+name="option2"
+value="<?php echo $question['option2']; ?>"
+class="form-control">
+
 </div>
 
 <div class="mb-3">
+
 <label>Option 3</label>
-<input type="text" name="option3" class="form-control" required>
+
+<input type="text"
+name="option3"
+value="<?php echo $question['option3']; ?>"
+class="form-control">
+
 </div>
 
 <div class="mb-3">
+
 <label>Option 4</label>
-<input type="text" name="option4" class="form-control" required>
+
+<input type="text"
+name="option4"
+value="<?php echo $question['option4']; ?>"
+class="form-control">
+
 </div>
 
 <div class="mb-3">
+
 <label>Correct Answer</label>
 
-<select name="correct_answer"
+<select
+name="correct_answer"
 class="form-select">
 
 <option value="1">Option 1</option>
@@ -170,6 +191,7 @@ class="form-select">
 <input
 type="text"
 name="recommendation_title"
+value="<?php echo $question['recommendation_title']; ?>"
 class="form-control">
 
 </div>
@@ -179,17 +201,18 @@ class="form-control">
 <label>Recommendation Link</label>
 
 <input
-type="url"
+type="text"
 name="recommendation_link"
+value="<?php echo $question['recommendation_link']; ?>"
 class="form-control">
 
 </div>
 
 <button
-name="add_question"
+name="update_question"
 class="btn btn-custom text-white">
 
-Add Question
+Update Question
 
 </button>
 

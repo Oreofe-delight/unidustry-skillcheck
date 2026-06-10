@@ -1,5 +1,5 @@
 <?php
-include("includes/admin_auth.php");
+include("../includes/admin_auth.php");
 
 $totalStudents =
 mysqli_fetch_assoc(
@@ -70,6 +70,16 @@ Add Question
 Manage Questions
 </a>
 
+<a href="students.php">
+<i class="fas fa-user-graduate"></i>
+Students
+</a>
+
+<a href="results.php">
+<i class="fas fa-chart-bar"></i>
+Results
+</a>
+
 <a href="../logout.php">
 <i class="fas fa-sign-out-alt"></i>
 Logout
@@ -98,6 +108,101 @@ Logout
 <h2><?php echo $totalStudents; ?></h2>
 </div>
 <i class="fas fa-users"></i>
+</div>
+<div class="row mt-5 g-4">
+
+    <div class="col-lg-3">
+
+        <div class="dashboard-panel">
+
+            <i class="fas fa-plus-circle fa-3x mb-3 text-primary"></i>
+
+            <h4>Add Question</h4>
+
+            <p>
+                Create new technical and soft skill questions.
+            </p>
+
+            <a href="add_question.php"
+               class="btn btn-custom text-white">
+
+               Open Module
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3">
+
+        <div class="dashboard-panel">
+
+            <i class="fas fa-list fa-3x mb-3 text-success"></i>
+
+            <h4>Manage Questions</h4>
+
+            <p>
+                Edit, update or delete existing questions.
+            </p>
+
+            <a href="manage_questions.php"
+               class="btn btn-custom text-white">
+
+               Open Module
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3">
+
+        <div class="dashboard-panel">
+
+            <i class="fas fa-users fa-3x mb-3 text-warning"></i>
+
+            <h4>Students</h4>
+
+            <p>
+                View all registered students and their profiles.
+            </p>
+
+            <a href="students.php"
+               class="btn btn-custom text-white">
+
+               Open Module
+
+            </a>
+
+        </div>
+
+    </div>
+
+       <div class="col-lg-3">
+
+        <div class="dashboard-panel">
+
+            <i class="fas fa-chart-bar fa-3x mb-3"></i>
+
+            <h4>Assessment Results</h4>
+
+            <p>
+                View student scores and performance reports.
+            </p>
+
+            <a href="results.php"
+            class="btn btn-custom text-white">
+
+            Open Module
+
+            </a>
+
+        </div>
+
+    </div>
+
 </div>
 </div>
 

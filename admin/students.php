@@ -1,16 +1,38 @@
 <?php
-include("../includes/admin_auth.php");
+include(__DIR__ . "/../includes/admin_auth.php");
 
-/* FETCH STUDENTS */
-$students = mysqli_query($conn,
-"SELECT * FROM users ORDER BY id DESC");
+$search = $_GET['search'] ?? '';
+
+if($search != ''){
+
+    $query = mysqli_query($conn,"
+    SELECT *
+    FROM users
+    WHERE role='student'
+    AND (
+        fullname LIKE '%$search%'
+        OR email LIKE '%$search%'
+        OR student_id LIKE '%$search%'
+    )
+    ORDER BY id DESC
+    ");
+
+}else{
+
+    $query = mysqli_query($conn,"
+    SELECT *
+    FROM users
+    WHERE role='student'
+    ORDER BY id DESC
+    ");
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 
-<title>Manage Students</title>
+<title>Students</title>
 
 <link href="../assets/css/style.css" rel="stylesheet">
 
@@ -23,27 +45,42 @@ rel="stylesheet">
 
 <div class="container py-5">
 
-<div class="d-flex justify-content-between align-items-center mb-4">
+<h2 class="mb-4">
+Students Management
+</h2>
 
-<h2>Registered Students</h2>
+<form method="GET" class="mb-4">
 
-<a href="dashboard.php" class="btn btn-dark">
-Back to Dashboard
-</a>
+<div class="row">
+
+<div class="col-md-10">
+
+<input
+type="text"
+name="search"
+class="form-control"
+placeholder="Search Student Name, Email or Student ID">
 
 </div>
 
-<!-- SEARCH BOX -->
-<input type="text"
-id="searchInput"
-class="form-control mb-4"
-placeholder="Search student...">
+<div class="col-md-2">
 
-<div class="table-responsive">
+<button
+class="btn btn-custom text-white w-100">
 
-<table class="table table-bordered table-hover">
+Search
 
-<thead class="table-dark">
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+<table class="table table-bordered">
+
+<thead>
 
 <tr>
 
@@ -51,36 +88,54 @@ placeholder="Search student...">
 <th>Name</th>
 <th>Email</th>
 <th>Student ID</th>
-<th>Institution</th>
-<th>Department</th>
-<th>Level</th>
-<th>Phone</th>
+<th>Action</th>
 
 </tr>
 
 </thead>
 
-<tbody id="studentTable">
+<tbody>
 
-<?php while($row = mysqli_fetch_assoc($students)){ ?>
+<?php while($student=mysqli_fetch_assoc($query)){ ?>
 
 <tr>
 
-<td><?php echo $row['id']; ?></td>
+<td>
+<?php echo $student['id']; ?>
+</td>
 
-<td><?php echo $row['fullname']; ?></td>
+<td>
+<?php echo $student['fullname']; ?>
+</td>
 
-<td><?php echo $row['email']; ?></td>
+<td>
+<?php echo $student['email']; ?>
+</td>
 
-<td><?php echo $row['student_id']; ?></td>
+<td>
+<?php echo $student['student_id']; ?>
+</td>
 
-<td><?php echo $row['institution']; ?></td>
+<td>
 
-<td><?php echo $row['department']; ?></td>
+<a
+href="student_details.php?id=<?php echo $student['id']; ?>"
+class="btn btn-primary btn-sm">
 
-<td><?php echo $row['level']; ?></td>
+View
 
-<td><?php echo $row['phone']; ?></td>
+</a>
+
+<a
+href="delete_student.php?id=<?php echo $student['id']; ?>"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete this student?')">
+
+Delete
+
+</a>
+
+</td>
 
 </tr>
 
@@ -91,33 +146,6 @@ placeholder="Search student...">
 </table>
 
 </div>
-
-</div>
-
-<!-- SIMPLE SEARCH SCRIPT -->
-<script>
-
-const searchInput = document.getElementById("searchInput");
-
-searchInput.addEventListener("keyup", function(){
-
-let filter = searchInput.value.toLowerCase();
-
-let rows = document.querySelectorAll("#studentTable tr");
-
-rows.forEach(row => {
-
-let text = row.innerText.toLowerCase();
-
-row.style.display = text.includes(filter)
-? ""
-: "none";
-
-});
-
-});
-
-</script>
 
 </body>
 </html>

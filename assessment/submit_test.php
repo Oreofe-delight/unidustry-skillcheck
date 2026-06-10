@@ -8,6 +8,8 @@ $total = $_POST['total'];
 
 $score = 0;
 
+$recommendations = [];
+
 $result = mysqli_query($conn, "SELECT * FROM questions WHERE category='$category'");
 
 while($row = mysqli_fetch_assoc($result)){
@@ -18,6 +20,21 @@ while($row = mysqli_fetch_assoc($result)){
     $selected = isset($_POST["q$qid"]) ? $_POST["q$qid"] : 0;
 
     $is_correct = ($selected == $correct) ? 1 : 0;
+
+    if(!$is_correct){
+
+    $recommendations[] = [
+
+        'question' => $row['question'],
+
+        'type' => $row['recommendation_type'],
+
+        'title' => $row['recommendation_title'],
+
+        'link' => $row['recommendation_link']
+
+    ];
+}
 
     if($is_correct){
         $score++;
@@ -52,6 +69,8 @@ VALUES
 
 $_SESSION['score'] = $score;
 $_SESSION['total'] = $total;
+
+$_SESSION['recommendations'] = $recommendations;
 
 header("Location: results.php");
 exit();

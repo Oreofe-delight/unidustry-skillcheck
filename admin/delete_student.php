@@ -5,8 +5,8 @@ $id = intval($_GET['id']);
 
 mysqli_query(
 $conn,
-"DELETE FROM questions WHERE id='$id'"
+"DELETE FROM users WHERE id='$id'"
 );
 
-header("Location: manage_questions.php");
+header("Location: students.php");
 exit();

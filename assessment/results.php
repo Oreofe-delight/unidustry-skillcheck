@@ -1,83 +1,112 @@
 <?php
-include("../includes/user_auth.php");
+session_start();
 
-$user_id = $_SESSION['user_id'];
+$score = $_SESSION['score'];
+$total = $_SESSION['total'];
 
-$query = mysqli_query($conn, "
-SELECT q.question, q.option1, q.option2, q.option3, q.option4,
-       q.correct_option, q.resource_link,
-       ua.selected_option, ua.is_correct
-FROM user_answers ua
-JOIN questions q ON ua.question_id = q.id
-WHERE ua.user_id = '$user_id'
-ORDER BY ua.id DESC
-LIMIT 10
-");
+$recommendations =
+$_SESSION['recommendations'] ?? [];
+
+$percentage =
+round(($score/$total)*100);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Detailed Results</title>
+
+<title>Assessment Result</title>
 
 <link href="../assets/css/style.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="auth-wrapper">
+<div class="container py-5">
+
 <div class="card">
 
-<h3 class="mb-4 text-center">Detailed Feedback</h3>
+<h2>Your Result</h2>
 
-<?php while($row = mysqli_fetch_assoc($query)){ ?>
+<h4 class="mb-4">
 
-<div class="mb-4 p-3 border rounded">
+Score:
 
-<p><strong><?php echo $row['question']; ?></strong></p>
+<?php echo $score; ?>
 
-<?php
-$options = [
-    1 => $row['option1'],
-    2 => $row['option2'],
-    3 => $row['option3'],
-    4 => $row['option4']
-];
+/
 
-foreach($options as $key => $value){
-    
-    $style = "";
+<?php echo $total; ?>
 
-    if($key == $row['correct_option']){
-        $style = "color:green; font-weight:bold;";
-    }
+(<?php echo $percentage; ?>%)
 
-    if($key == $row['selected_option'] && !$row['is_correct']){
-        $style = "color:red; font-weight:bold;";
-    }
+</h4>
 
-    echo "<p style='$style'> $value </p>";
-}
-?>
+<?php if(count($recommendations)>0){ ?>
 
-<?php if(!$row['is_correct']){ ?>
-    <p class="text-danger">Incorrect ❌</p>
-    <a href="<?php echo $row['resource_link']; ?>" target="_blank">
-        Learn more here
-    </a>
-<?php } else { ?>
-    <p class="text-success">Correct ✅</p>
-<?php } ?>
+<h3 class="mb-4">
+
+Recommended Learning Resources
+
+</h3>
+
+<?php foreach($recommendations as $item){ ?>
+
+<div class="alert alert-warning">
+
+<h5>
+
+Failed Question:
+
+</h5>
+
+<p>
+
+<?php echo $item['question']; ?>
+
+</p>
+
+<hr>
+
+<strong>
+
+<?php echo ucfirst($item['type']); ?>
+
+</strong>
+
+<br>
+
+<?php echo $item['title']; ?>
+
+<br><br>
+
+<a href="<?php echo $item['link']; ?>"
+target="_blank"
+class="btn btn-primary">
+
+Open Resource
+
+</a>
 
 </div>
 
 <?php } ?>
 
-<a href="../dashboard.php" class="btn btn-custom w-100">Back to Dashboard</a>
+<?php } ?>
+
+<a href="../dashboard.php"
+class="btn btn-custom text-white">
+
+Return Dashboard
+
+</a>
 
 </div>
+
 </div>
 
 </body>
