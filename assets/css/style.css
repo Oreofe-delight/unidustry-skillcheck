@@ -670,3 +670,69 @@ input[type="radio"]{
         width:100%;
     }
 }
+
+
+/* =========================
+   ADMIN MODULES
+========================= */
+
+.admin-page{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(78,84,200,.95),
+    rgba(108,99,255,.90)
+    );
+
+    padding:40px;
+}
+
+.admin-card{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.15);
+}
+
+.admin-header{
+
+    margin-bottom:30px;
+
+    padding-bottom:20px;
+
+    border-bottom:1px solid #eee;
+}
+
+.admin-header h2{
+
+    font-weight:700;
+
+    color:#4e54c8;
+}
+
+.admin-table{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+}
+
+.admin-table thead{
+
+    background:#4e54c8;
+
+    color:white;
+}

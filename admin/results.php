@@ -28,8 +28,13 @@ ORDER BY results.id DESC
 </head>
 <body>
 
-<div class="container py-5">
+<div class="dashboard-layout">
 
+<?php include("sidebar.php"); ?>
+
+<main class="main-content">
+
+<div class="container-fluid py-4">
 <h2>Assessment Results</h2>
 
 <table class="table table-bordered">
@@ -72,6 +77,8 @@ ORDER BY results.id DESC
 
 </table>
 
+</div>
+</main>
 </div>
 
 </body>

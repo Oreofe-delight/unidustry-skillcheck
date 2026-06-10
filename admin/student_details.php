@@ -34,8 +34,13 @@ rel="stylesheet">
 
 <body>
 
-<div class="container py-5">
+<div class="dashboard-layout">
 
+<?php include("sidebar.php"); ?>
+
+<main class="main-content">
+
+<div class="container-fluid py-4">
 <div class="card">
 
 <h2>
@@ -116,6 +121,8 @@ Assessment History
 
 </div>
 
+</div>
+</main>
 </div>
 
 </body>

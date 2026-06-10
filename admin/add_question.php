@@ -71,8 +71,13 @@ if(isset($_POST['add_question'])){
 
 <body>
 
-<div class="container py-5">
+<div class="dashboard-layout">
 
+<?php include("sidebar.php"); ?>
+
+<main class="main-content">
+
+<div class="container-fluid py-4">
 <h2 class="mb-4">Add Question</h2>
 
 <?php if($message){ ?>
@@ -195,6 +200,8 @@ Add Question
 
 </form>
 
+</div>
+</main>
 </div>
 
 </body>

@@ -41,13 +41,28 @@ rel="stylesheet">
 
 </head>
 
-<body>
+<body class="admin-page">
 
-<div class="container py-5">
+<div class="dashboard-layout">
 
-<h2 class="mb-4">
+<?php include("sidebar.php"); ?>
+
+<main class="main-content">
+
+<div class="container-fluid py-4">
+    <div class="admin-card">
+
+<div class="admin-header">
+
+<h2>
 Students Management
 </h2>
+
+<p>
+View and manage registered students.
+</p>
+
+</div>
 
 <form method="GET" class="mb-4">
 
@@ -78,8 +93,8 @@ Search
 
 </form>
 
-<table class="table table-bordered">
-
+<table class="table admin-table">
+    
 <thead>
 
 <tr>
@@ -145,6 +160,8 @@ Delete
 
 </table>
 
+</div>
+</main>
 </div>
 
 </body>
