@@ -73,6 +73,7 @@ if($row = mysqli_fetch_assoc($avg_soft_result)) $avg_soft = round($row['avg_scor
             <a href="dashboard.php" class="active"><i class="fas fa-home"></i> Dashboard</a>
             <a href="assessment/assessment.php?type=technical"><i class="fas fa-code"></i> Technical Test</a>
             <a href="assessment/assessment.php?type=soft"><i class="fas fa-users"></i> Soft Skills</a>
+            <a href="assessment/coding_list.php" class="btn btn-custom text-white"><i class="fas fa-code me-2"></i> Coding Challenges</a>
             <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
             <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>

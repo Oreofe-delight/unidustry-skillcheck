@@ -23,6 +23,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <a href="results.php" class="<?php echo $current_page == 'results.php' ? 'active' : ''; ?>">
             <i class="fas fa-chart-bar"></i> Results
         </a>
+        <a href="analytics.php">
+            <i class="fas fa-chart-line"></i> Analytics
+        </a>
         <a href="../logout.php">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
