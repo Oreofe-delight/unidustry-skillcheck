@@ -2,20 +2,31 @@
 include("../includes/user_auth.php");
 
 // Get assessment type from URL
-$category = isset($_GET['type']) && $_GET['type'] == 'soft' ? 'softskills' : 'technical';
+$category = isset($_GET['type']) && $_GET['type'] == 'soft' ? 'soft' : 'technical';
 $page_title = $category == 'technical' ? 'Technical Assessment' : 'Soft Skills Assessment';
 
 // Map category to database value
 $db_category = $category == 'technical' ? 'technical' : 'softskills';
 
-// Fetch questions
-$result = mysqli_query($conn, "SELECT * FROM questions WHERE category = '$db_category' ORDER BY id");
+// Set question limit
+$question_limit = 50; // Maximum 50 questions per assessment
+
+// Fetch questions - RANDOMIZED and LIMITED
+$result = mysqli_query($conn, "SELECT * FROM questions WHERE category = '$db_category' ORDER BY RAND() LIMIT $question_limit");
+
 $questions = [];
 while($row = mysqli_fetch_assoc($result)) {
     $questions[] = $row;
 }
 $total_questions = count($questions);
-$time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 for soft skills
+$time_limit = $category == 'technical' ? 60 : 45; // 60 mins for technical, 45 for soft skills
+
+// Store question IDs in session for tracking
+$_SESSION['current_assessment'] = [
+    'category' => $category,
+    'questions' => array_column($questions, 'id'),
+    'start_time' => time()
+];
 ?>
 
 <!DOCTYPE html>
@@ -30,35 +41,57 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
+        body {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .assessment-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .assessment-card {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
         .timer-box {
             background: linear-gradient(135deg, #4e54c8, #6c63ff);
             color: white;
             padding: 12px 20px;
             border-radius: 12px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             text-align: center;
             position: sticky;
             top: 20px;
             z-index: 100;
         }
+        
         .timer-box.warning {
             background: linear-gradient(135deg, #dc3545, #ff6b6b);
             animation: pulse 1s infinite;
         }
+        
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
+        
         .question-card {
             background: white;
             border-radius: 20px;
-            padding: 30px;
+            padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #6c63ff;
         }
+        
         .question-number {
             background: #6c63ff;
             color: white;
@@ -69,9 +102,10 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 12px;
         }
-        .option-label {
+        
+        .option-item {
             background: #f8f9fa;
             border-radius: 12px;
             padding: 12px 15px;
@@ -81,19 +115,23 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
             display: flex;
             align-items: center;
         }
-        .option-label:hover {
+        
+        .option-item:hover {
             background: #e9ecef;
             transform: translateX(5px);
         }
-        .option-label input {
+        
+        .option-item.selected {
+            background: #e8eaff;
+            border-left: 3px solid #6c63ff;
+        }
+        
+        .option-item input {
             margin-right: 12px;
             width: 18px;
             height: 18px;
         }
-        .option-label.selected {
-            background: #e8eaff;
-            border-left: 4px solid #6c63ff;
-        }
+        
         .nav-buttons {
             position: sticky;
             bottom: 20px;
@@ -103,48 +141,51 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
             box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
             margin-top: 30px;
         }
+        
         .progress {
             height: 8px;
             border-radius: 10px;
         }
+        
         .progress-bar {
             background: linear-gradient(90deg, #4e54c8, #6c63ff);
             border-radius: 10px;
             transition: width 0.3s ease;
         }
-        .question-counter {
-            font-size: 14px;
-            color: #6c63ff;
-            font-weight: 500;
-        }
-        .btn-option {
-            background: white;
-            border: 2px solid #e0e7ff;
-            border-radius: 12px;
-            padding: 12px 20px;
-            width: 100%;
-            text-align: left;
-            transition: all 0.2s;
-        }
-        .btn-option:hover {
-            border-color: #6c63ff;
-            background: #f8f9ff;
-        }
-        .btn-option.active {
-            border-color: #6c63ff;
-            background: #e8eaff;
-        }
+        
         .saved-indicator {
             font-size: 12px;
             color: #28a745;
-            margin-left: 10px;
+        }
+        
+        .btn-custom {
+            background: linear-gradient(90deg, #4e54c8, #6c63ff);
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        
+        .btn-custom:hover {
+            opacity: 0.9;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .assessment-card {
+                padding: 20px;
+            }
+            .option-item {
+                padding: 10px 12px;
+            }
         }
     </style>
 </head>
 
-<body class="assessment-page">
-    <div class="auth-wrapper">
-        <div class="assessment-card" style="max-width: 900px; width: 100%;">
+<body>
+    <div class="assessment-container">
+        <div class="assessment-card">
             
             <!-- Header with Timer -->
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
@@ -153,6 +194,7 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
                     <p class="text-muted mb-0">
                         <i class="fas fa-question-circle me-1"></i>
                         <span id="totalQuestions"><?php echo $total_questions; ?></span> questions
+                        <small class="text-muted ms-2">(Randomly selected from our question bank)</small>
                     </p>
                 </div>
                 <div class="timer-box" id="timerBox">
@@ -164,16 +206,23 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
             <!-- Progress Bar -->
             <div class="mb-4">
                 <div class="d-flex justify-content-between mb-2">
-                    <span class="question-counter">
-                        <i class="fas fa-chart-line me-1"></i>
-                        Progress
+                    <span class="small">
+                        <i class="fas fa-chart-line me-1"></i> Progress
                     </span>
-                    <span class="question-counter" id="progressPercent">0%</span>
+                    <span class="small" id="progressPercent">0%</span>
                 </div>
                 <div class="progress">
                     <div class="progress-bar" id="progressBar" style="width: 0%"></div>
                 </div>
             </div>
+            
+            <?php if($total_questions == 0): ?>
+                <div class="alert alert-warning text-center">
+                    <i class="fas fa-exclamation-triangle fa-2x mb-2 d-block"></i>
+                    No questions available in this category yet.
+                    <a href="../dashboard.php" class="btn btn-primary mt-3">Back to Dashboard</a>
+                </div>
+            <?php else: ?>
             
             <form method="POST" action="submit_test.php" id="assessmentForm">
                 <input type="hidden" name="category" value="<?php echo $category; ?>">
@@ -186,7 +235,7 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
                     <div class="question-card" id="q_<?php echo $q['id']; ?>" style="display: <?php echo $index == 0 ? 'block' : 'none'; ?>">
                         <div class="d-flex align-items-center mb-3">
                             <span class="question-number"><?php echo $index + 1; ?></span>
-                            <h5 class="mb-0"><?php echo h($q['question']); ?></h5>
+                            <h5 class="mb-0"><?php echo htmlspecialchars($q['question']); ?></h5>
                         </div>
                         
                         <div class="mt-3">
@@ -200,21 +249,21 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
                             foreach($options as $val => $option): 
                                 if(empty($option)) continue;
                             ?>
-                            <div class="option-label" onclick="selectOption(this, <?php echo $q['id']; ?>, <?php echo $val; ?>)">
+                            <div class="option-item" onclick="selectOption(this, <?php echo $q['id']; ?>, <?php echo $val; ?>)">
                                 <input type="radio" 
                                        name="q<?php echo $q['id']; ?>" 
                                        value="<?php echo $val; ?>"
                                        id="q<?php echo $q['id']; ?>_<?php echo $val; ?>"
                                        onchange="saveAnswer(<?php echo $q['id']; ?>, <?php echo $val; ?>)">
                                 <label for="q<?php echo $q['id']; ?>_<?php echo $val; ?>" class="mb-0" style="cursor: pointer; width: 100%;">
-                                    <?php echo h($option); ?>
+                                    <?php echo htmlspecialchars($option); ?>
                                 </label>
                             </div>
                             <?php endforeach; ?>
                         </div>
                         
                         <div class="text-end mt-3">
-                            <small class="text-muted" id="saved_<?php echo $q['id']; ?>">
+                            <small class="saved-indicator" id="saved_<?php echo $q['id']; ?>">
                                 <i class="far fa-save"></i> Not answered
                             </small>
                         </div>
@@ -238,12 +287,13 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
                     </div>
                     
                     <div class="text-center mt-3 pt-2 border-top">
-                        <button type="submit" class="btn btn-custom text-white px-5 py-2" onclick="return confirmSubmit()">
+                        <button type="submit" class="btn btn-custom px-5 py-2" onclick="return confirmSubmit()">
                             <i class="fas fa-paper-plane me-2"></i> Submit Test
                         </button>
                     </div>
                 </div>
             </form>
+            <?php endif; ?>
         </div>
     </div>
     
@@ -266,7 +316,7 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
                     const radio = document.querySelector(`input[name="q${qId}"][value="${val}"]`);
                     if(radio) {
                         radio.checked = true;
-                        const optionDiv = radio.closest('.option-label');
+                        const optionDiv = radio.closest('.option-item');
                         if(optionDiv) optionDiv.classList.add('selected');
                         document.getElementById(`saved_${qId}`).innerHTML = '<i class="fas fa-check-circle text-success"></i> Saved';
                     }
@@ -292,7 +342,7 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
             }
             // Remove selected class from siblings
             const parent = element.parentElement;
-            const options = parent.querySelectorAll('.option-label');
+            const options = parent.querySelectorAll('.option-item');
             options.forEach(opt => opt.classList.remove('selected'));
             element.classList.add('selected');
         }
@@ -307,21 +357,13 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
         
         // Navigate between questions
         function changeQuestion(direction) {
-            // Hide current question
             const questions = document.querySelectorAll('.question-card');
             questions[currentQuestion].style.display = 'none';
-            
-            // Update current question index
             currentQuestion += direction;
-            
-            // Show new question
             questions[currentQuestion].style.display = 'block';
             
-            // Update navigation buttons
             document.getElementById('prevBtn').disabled = currentQuestion === 0;
             document.getElementById('nextBtn').disabled = currentQuestion === totalQuestions - 1;
-            
-            // Update current question display
             document.getElementById('currentQDisplay').innerText = currentQuestion + 1;
         }
         
@@ -340,12 +382,10 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
                     const seconds = timeRemaining % 60;
                     document.getElementById('timer').innerHTML = `${minutes}:${seconds.toString().padStart(2, '0')}`;
                     
-                    // Warning when 1 minute left
                     if(timeRemaining <= 60) {
                         document.getElementById('timerBox').classList.add('warning');
                     }
                     
-                    // Store time spent
                     const timeSpent = (timeLimit * 60) - timeRemaining;
                     document.getElementById('timeSpent').value = timeSpent;
                 }
@@ -356,17 +396,16 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
         function confirmSubmit() {
             const answeredCount = Object.keys(answers).length;
             if(answeredCount < totalQuestions) {
-                const confirmMsg = `You have answered ${answeredCount} out of ${totalQuestions} questions.\n\nAre you sure you want to submit?`;
-                return confirm(confirmMsg);
+                return confirm(`You have answered ${answeredCount} out of ${totalQuestions} questions.\n\nAre you sure you want to submit?`);
             }
             return confirm('Are you sure you want to submit your assessment?');
         }
         
         // Load saved answers on page load
-        loadSavedAnswers();
-        
-        // Start timer
-        startTimer();
+        if(totalQuestions > 0) {
+            loadSavedAnswers();
+            startTimer();
+        }
         
         // Warn before leaving page
         window.addEventListener('beforeunload', function(e) {
@@ -377,7 +416,7 @@ $time_limit = $category == 'technical' ? 30 : 20; // 30 mins for technical, 20 f
         });
         
         // Save answers before form submission
-        document.getElementById('assessmentForm').addEventListener('submit', function() {
+        document.getElementById('assessmentForm')?.addEventListener('submit', function() {
             localStorage.removeItem('assessment_answers_<?php echo $category; ?>');
         });
     </script>

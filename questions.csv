@@ -1,102 +1,126 @@
-category,question,option1,option2,option3,option4,correct_answer
-technical,"What does HTML stand for?","Hyper Text Markup Language","Home Tool Markup Language","High Text Machine Language","Hyper Transfer Markup Language",1
-technical,"Which CSS property is used to change the text color of an element?","text-color","color","font-color","bgcolor",2
-technical,"What does PHP stand for?","Personal Home Page","Preprocessor","Hypertext Preprocessor","Programming Language",3
-technical,"Which SQL statement is used to extract data from a database?","SELECT","EXTRACT","GET","OPEN",1
-technical,"What does JavaScript use to declare a variable?","var","let","const","All of the above",4
-technical,"Which of the following is a valid way to comment in Python?","// comment","# comment","/* comment */","<!-- comment -->",2
-technical,"What does CSS stand for?","Creative Style Sheets","Computer Style Sheets","Cascading Style Sheets","Colorful Style Sheets",3
-technical,"Which tag is used to create a hyperlink in HTML?","<link>","<a>","<href>","<url>",2
-technical,"What does SQL stand for?","Structured Question Language","Structured Query Language","Simple Query Language","Standard Query Language",2
-technical,"Which operator is used for 'not equal to' in PHP?","!=","<>","!==","Both A and B",4
-technical,"What is the correct way to start a session in PHP?","session_start()","start_session()","session_begin()","begin_session()",1
-technical,"Which function is used to include a file in PHP?","include()","require()","Both A and B","import()",3
-technical,"What does AJAX stand for?","Asynchronous JavaScript and XML","Advanced JavaScript and XML","Asynchronous JSON and XML","Active JavaScript and XML",1
-technical,"Which method is used to send data to the server without reloading the page?","GET","POST","AJAX","FETCH",3
-technical,"What does API stand for?","Application Programming Interface","Application Program Interface","Advanced Programming Interface","Application Protocol Interface",1
-technical,"Which of the following is a NoSQL database?","MySQL","PostgreSQL","MongoDB","SQLite",3
-technical,"What is the default port for MySQL?","3306","5432","8080","80",1
-technical,"Which Git command is used to create a new branch?","git branch new-branch","git checkout -b new-branch","git create branch","Both A and B",4
-technical,"What does OOP stand for?","Object-Oriented Programming","Ordered Object Programming","Object-Oriented Protocol","Object Organization Programming",1
-technical,"Which principle is NOT part of OOP?","Inheritance","Polymorphism","Encapsulation","Compilation",4
-technical,"What is the output of 5 + '5' in JavaScript?","10","55","Error","Undefined",2
-technical,"Which HTML tag is used to display an image?","<img>","<image>","<src>","<pic>",1
-technical,"What does JSON stand for?","JavaScript Object Notation","Java Object Notation","JavaScript Oriented Notation","Java Script Object Notation",1
-technical,"Which HTTP method is used to retrieve data from a server?","POST","GET","PUT","DELETE",2
-technical,"What does CRUD stand for?","Create, Read, Update, Delete","Create, Retrieve, Update, Delete","Create, Read, Upload, Delete","Create, Read, Update, Drop",1
-technical,"Which of the following is a programming paradigm?","Procedural","Object-Oriented","Functional","All of the above",4
-technical,"What does IDE stand for?","Integrated Development Environment","Integrated Design Environment","Internal Development Environment","Integrated Data Environment",1
-technical,"Which of the following is a version control system?","Git","SVN","Mercurial","All of the above",4
-technical,"What does DNS stand for?","Domain Name System","Data Name System","Domain Network System","Digital Name System",1
-technical,"Which protocol is used for secure communication over the internet?","HTTP","FTP","HTTPS","SMTP",3
-technical,"What is the primary key in a database?","Unique identifier for a record","Foreign key reference","Index","Table name",1
-technical,"Which SQL clause is used to filter records?","WHERE","HAVING","FILTER","CONDITION",1
-technical,"What does JOIN do in SQL?","Combines rows from two tables","Deletes rows","Updates rows","Creates new table",1
-technical,"Which data structure uses LIFO (Last In First Out)?","Queue","Stack","Array","Linked List",2
-technical,"What is a primary key constraint?","Ensures unique values","Allows null values","Links two tables","Speeds up queries",1
-technical,"Which algorithm is used for sorting?","Bubble Sort","Quick Sort","Merge Sort","All of the above",4
-technical,"What is the time complexity of binary search?","O(n)","O(log n)","O(n²)","O(1)",2
-technical,"What does RAM stand for?","Random Access Memory","Read Access Memory","Runtime Access Memory","Rapid Access Memory",1
-technical,"Which company developed the Windows operating system?","Apple","Microsoft","Google","IBM",2
-technical,"What does CPU stand for?","Central Processing Unit","Computer Processing Unit","Central Program Unit","Central Processor Unit",1
-technical,"What is the cloud?","Internet-based computing","Local storage","Physical server","Network cable",1
-technical,"Which of the following is a cyber attack?","Phishing","DDoS","Man-in-the-Middle","All of the above",4
-technical,"What is a firewall?","Network security system","Web browser","Database","Programming language",1
-technical,"What does VPN stand for?","Virtual Private Network","Visual Private Network","Virtual Public Network","Virtual Protected Network",1
-technical,"Which of the following is a social media platform?","Facebook","Twitter","Instagram","All of the above",4
-technical,"What does IoT stand for?","Internet of Things","Internet of Technology","Integration of Things","Internet on Things",1
-technical,"Which company is known for search engine?","Google","Bing","Yahoo","All of the above",4
-technical,"What is AI?","Artificial Intelligence","Automated Intelligence","Advanced Intelligence","Applied Intelligence",1
-technical,"What does ML stand for?","Machine Learning","Markup Language","Meta Language","Memory Learning",1
-technical,"Which programming language is best for data science?","Python","R","SQL","All of the above",4
-softskills,"You are working on a team project and a teammate is struggling with their task. What do you do?","Ignore them","Do their work for them","Offer help and guidance","Complain to the manager",3
-softskills,"How do you handle a tight deadline?","Panic","Work overtime alone","Prioritize tasks and communicate with team","Give up",3
-softskills,"A customer reports a bug right before product release. What is your response?","Ignore the bug","Blame the customer","Acknowledge and schedule fix","Pretend not to hear",3
-softskills,"How do you respond to constructive criticism?","Get defensive","Ignore it","Listen and improve","Argue back",3
-softskills,"Your manager assigns you a task you've never done before. What do you do?","Refuse to do it","Attempt without asking","Ask for guidance and learn","Complain to colleagues",3
-softskills,"A colleague takes credit for your work. How do you handle it?","Stay silent","Confront aggressively","Speak privately with your manager","Do the same to them",3
-softskills,"How do you prioritize multiple tasks?","Work on easiest first","Work on hardest first","Based on urgency and importance","Randomly choose",3
-softskills,"You make a mistake that affects the project. What do you do?","Hide it","Blame someone else","Take responsibility and fix it","Wait for someone to notice",3
-softskills,"How do you handle conflict with a coworker?","Avoid them","Argue publicly","Discuss privately and find solution","Complain to HR immediately",3
-softskills,"What is the best way to communicate technical issues to non-technical people?","Use technical jargon","Use simple analogies","Send a long email","Avoid explaining",2
-softskills,"You notice a security vulnerability in the code. What do you do?","Ignore it","Fix it silently","Report it to the team lead","Exploit it",3
-softskills,"How do you handle stress at work?","Take frequent breaks","Practice deep breathing","Prioritize tasks","All of the above",4
-softskills,"What is the most important quality in a team member?","Reliability","Speed","Experience","Education",1
-softskills,"How do you handle a situation where you disagree with the project approach?","Stay silent","Argue aggressively","Present alternative solution professionally","Quit the project",3
-softskills,"What is active listening?","Hearing words","Waiting to speak","Understanding and responding thoughtfully","Taking notes",3
-softskills,"How do you build trust with your team?","Complete tasks on time","Be honest and transparent","Help others","All of the above",4
-softskills,"What would you do if you are overworked?","Burn out silently","Request help or reprioritization","Work 24/7","Quit immediately",2
-softskills,"How do you celebrate team success?","Take all credit","Share recognition with team","Ignore it","Take a day off",2
-softskills,"What is the best way to give feedback to a peer?","Publicly criticize","Send an angry email","Private, constructive conversation","Ignore the issue",3
-softskills,"How do you adapt to a new technology or process?","Resist change","Learn quickly and ask questions","Wait for training","Avoid using it",2
-softskills,"What does empathy mean in the workplace?","Understanding others' feelings","Being sympathetic","Ignoring emotions","Staying professional",1
-softskills,"How do you handle an angry customer?","Argue back","Listen and apologize","Hang up","Blame the company",2
-softskills,"What is the best way to manage your time?","Make a to-do list","Prioritize tasks","Avoid multitasking","All of the above",4
-softskills,"How do you maintain work-life balance?","Work 24/7","Set boundaries and take breaks","Never take vacation","Check emails all night",2
-softskills,"What would you do if you see a colleague being bullied?","Ignore it","Join the bully","Report to manager","Laugh at them",3
-softskills,"How do you handle a situation where you don't know the answer?","Lie","Say 'I don't know, but I'll find out'","Guess","Avoid the question",2
-softskills,"What is the most effective leadership style?","Authoritarian","Democratic","Laissez-faire","Situational",4
-softskills,"How do you motivate a demotivated team member?","Criticize them","Recognize their efforts and encourage","Ignore them","Replace them",2
-softskills,"What is the key to successful negotiation?","Winning at all costs","Finding win-win solution","Walking away","Aggressive demands",2
-softskills,"How do you handle gossip in the workplace?","Participate","Spread more gossip","Avoid and redirect conversation","Report immediately",3
-softskills,"What is the most important soft skill for a manager?","Technical knowledge","Communication","Speed","Experience",2
-softskills,"How do you respond to a missed deadline?","Make excuses","Apologize and provide solution","Blame others","Ignore it",2
-softskills,"What is the best way to ask for help?","Never ask","Ask clearly and respectfully","Demand help","Wait for offer",2
-softskills,"How do you handle a situation where you are interrupted constantly?","Stay silent","Politely ask to finish","Yell at them","Walk away",2
-softskills,"What is the most effective way to learn new skills?","Only formal training","Self-study and practice","Wait for promotion","Avoid learning",2
-softskills,"How do you respond to a rejected idea?","Give up","Get angry","Ask for feedback and improve","Blame others",3
-softskills,"What is the best way to build professional relationships?","Network genuinely","Use people for gain","Avoid socializing","Stay isolated",1
-softskills,"How do you handle a difficult decision?","Procrastinate","Analyze options and decide","Ask everyone","Flip a coin",2
-softskills,"What is the most important factor for career growth?","Hard work only","Luck","Continuous learning and adaptability","Degrees",3
-softskills,"How do you handle a situation where you are wrongly accused?","Stay silent","Yell at accuser","Present facts calmly","Quit",3
-softskills,"What is the best way to show leadership?","Give orders","Lead by example","Take credit","Avoid responsibility",2
-softskills,"How do you handle a team member who is not contributing?","Do their work","Confront privately and offer support","Ignore them","Report immediately",2
-softskills,"What is the most effective way to resolve a dispute?","Escalate immediately","Mediate and find common ground","Take sides","Avoid",2
-softskills,"How do you maintain positivity during challenges?","Focus on solutions","Complain","Give up","Blame circumstances",1
-softskills,"What is the best way to impress your manager?","Take initiative and deliver results","Flatter them","Work late always","Gossip",1
-softskills,"How do you handle a toxic coworker?","Engage in drama","Maintain professionalism and distance","Complain constantly","Fight back",2
-softskills,"What is the most important quality for career success?","Technical skills only","Soft skills only","Combination of both","Luck",3
-softskills,"How do you approach a performance review?","Get defensive","Be open to feedback and discuss growth","Argue every point","Skip it",2
-softskills,"What is the best way to build confidence?","Compare to others","Celebrate small wins","Avoid challenges","Wait for perfection",2
-softskills,"How do you handle success?","Stay humble and grateful","Brag about it","Ignore it","Take all credit",1
-softskills,"What is the most important lesson for a professional?","Always be right","Continuous improvement","Work harder than everyone","Follow orders",2
+category,question,option1,option2,option3,option4,correct_answer,recommendation_type,recommendation_title,recommendation_link
+technical,"What does HTML stand for?","Hyper Text Markup Language","Home Tool Markup Language","High Text Machine Language","Hyper Transfer Markup Language",1,w3schools,HTML Tutorial,https://www.w3schools.com/html/
+technical,"Which CSS property is used to change the text color of an element?","text-color","color","font-color","bgcolor",2,w3schools,CSS Colors,https://www.w3schools.com/css/css_colors.asp
+technical,"What does PHP stand for?","Personal Home Page","Preprocessor","Hypertext Preprocessor","Programming Language",3,w3schools,PHP Tutorial,https://www.w3schools.com/php/
+technical,"Which SQL statement is used to extract data from a database?","SELECT","EXTRACT","GET","OPEN",1,w3schools,SQL SELECT,https://www.w3schools.com/sql/sql_select.asp
+technical,"What does JavaScript use to declare a variable?","var","let","const","All of the above",4,w3schools,JS Variables,https://www.w3schools.com/js/js_variables.asp
+technical,"Which of the following is a valid way to comment in Python?","// comment","# comment","/* comment */","<!-- comment -->",2,w3schools,Python Comments,https://www.w3schools.com/python/python_comments.asp
+technical,"What does CSS stand for?","Creative Style Sheets","Computer Style Sheets","Cascading Style Sheets","Colorful Style Sheets",3,w3schools,CSS Tutorial,https://www.w3schools.com/css/
+technical,"Which tag is used to create a hyperlink in HTML?","<link>","<a>","<href>","<url>",2,w3schools,HTML Links,https://www.w3schools.com/html/html_links.asp
+technical,"What does SQL stand for?","Structured Question Language","Structured Query Language","Simple Query Language","Standard Query Language",2,w3schools,SQL Tutorial,https://www.w3schools.com/sql/
+technical,"Which operator is used for 'not equal to' in PHP?","!=","<>","!==","Both A and B",4,w3schools,PHP Operators,https://www.w3schools.com/php/php_operators.asp
+technical,"What is the correct way to start a session in PHP?","session_start()","start_session()","session_begin()","begin_session()",1,w3schools,PHP Sessions,https://www.w3schools.com/php/php_sessions.asp
+technical,"Which function is used to include a file in PHP?","include()","require()","Both A and B","import()",3,w3schools,PHP Include,https://www.w3schools.com/php/php_includes.asp
+technical,"What does AJAX stand for?","Asynchronous JavaScript and XML","Advanced JavaScript and XML","Asynchronous JSON and XML","Active JavaScript and XML",1,w3schools,AJAX Tutorial,https://www.w3schools.com/xml/ajax_intro.asp
+technical,"Which method is used to send data to the server without reloading the page?","GET","POST","AJAX","FETCH",3,w3schools,AJAX Tutorial,https://www.w3schools.com/xml/ajax_intro.asp
+technical,"What does API stand for?","Application Programming Interface","Application Program Interface","Advanced Programming Interface","Application Protocol Interface",1,w3schools,API Tutorial,https://www.w3schools.com/whatis/whatis_api.asp
+technical,"Which of the following is a NoSQL database?","MySQL","PostgreSQL","MongoDB","SQLite",3,w3schools,MongoDB Tutorial,https://www.w3schools.com/mongodb/
+technical,"What is the default port for MySQL?","3306","5432","8080","80",1,w3schools,MySQL Tutorial,https://www.w3schools.com/mysql/
+technical,"Which Git command is used to create a new branch?","git branch new-branch","git checkout -b new-branch","git create branch","Both A and B",4,w3schools,Git Branch,https://www.w3schools.com/git/git_branch.asp
+technical,"What does OOP stand for?","Object-Oriented Programming","Ordered Object Programming","Object-Oriented Protocol","Object Organization Programming",1,w3schools,OOP Tutorial,https://www.w3schools.com/java/java_oop.asp
+technical,"Which principle is NOT part of OOP?","Inheritance","Polymorphism","Encapsulation","Compilation",4,w3schools,OOP Concepts,https://www.w3schools.com/java/java_oop.asp
+technical,"What is the output of 5 + '5' in JavaScript?","10","55","Error","Undefined",2,w3schools,JS Type Coercion,https://www.w3schools.com/js/js_type_conversion.asp
+technical,"Which HTML tag is used to display an image?","<img>","<image>","<src>","<pic>",1,w3schools,HTML Images,https://www.w3schools.com/html/html_images.asp
+technical,"What does JSON stand for?","JavaScript Object Notation","Java Object Notation","JavaScript Oriented Notation","Java Script Object Notation",1,w3schools,JSON Tutorial,https://www.w3schools.com/js/js_json_intro.asp
+technical,"Which HTTP method is used to retrieve data from a server?","POST","GET","PUT","DELETE",2,w3schools,HTTP Methods,https://www.w3schools.com/tags/ref_httpmethods.asp
+technical,"What does CRUD stand for?","Create, Read, Update, Delete","Create, Retrieve, Update, Delete","Create, Read, Upload, Delete","Create, Read, Update, Drop",1,w3schools,CRUD Operations,https://www.w3schools.com/whatis/whatis_crud.asp
+technical,"Which of the following is a programming paradigm?","Procedural","Object-Oriented","Functional","All of the above",4,w3schools,Programming Paradigms,https://www.w3schools.com/whatis/whatis_programming.asp
+technical,"What does IDE stand for?","Integrated Development Environment","Integrated Design Environment","Internal Development Environment","Integrated Data Environment",1,w3schools,IDE Explained,https://www.w3schools.com/whatis/whatis_ide.asp
+technical,"Which of the following is a version control system?","Git","SVN","Mercurial","All of the above",4,w3schools,Version Control,https://www.w3schools.com/git/
+technical,"What does DNS stand for?","Domain Name System","Data Name System","Domain Network System","Digital Name System",1,w3schools,DNS Explained,https://www.w3schools.com/whatis/whatis_dns.asp
+technical,"Which protocol is used for secure communication over the internet?","HTTP","FTP","HTTPS","SMTP",3,w3schools,HTTPS Tutorial,https://www.w3schools.com/whatis/whatis_https.asp
+technical,"What is the primary key in a database?","Unique identifier for a record","Foreign key reference","Index","Table name",1,w3schools,Primary Key,https://www.w3schools.com/sql/sql_primarykey.asp
+technical,"Which SQL clause is used to filter records?","WHERE","HAVING","FILTER","CONDITION",1,w3schools,SQL WHERE,https://www.w3schools.com/sql/sql_where.asp
+technical,"What does JOIN do in SQL?","Combines rows from two tables","Deletes rows","Updates rows","Creates new table",1,w3schools,SQL JOIN,https://www.w3schools.com/sql/sql_join.asp
+technical,"Which data structure uses LIFO (Last In First Out)?","Queue","Stack","Array","Linked List",2,w3schools,Data Structures,https://www.w3schools.com/dsa/dsa_data_structures.php
+technical,"What is a primary key constraint?","Ensures unique values","Allows null values","Links two tables","Speeds up queries",1,w3schools,SQL Constraints,https://www.w3schools.com/sql/sql_constraints.asp
+technical,"Which algorithm is used for sorting?","Bubble Sort","Quick Sort","Merge Sort","All of the above",4,w3schools,Sorting Algorithms,https://www.w3schools.com/dsa/dsa_algorithms.php
+technical,"What is the time complexity of binary search?","O(n)","O(log n)","O(n²)","O(1)",2,w3schools,Big O Notation,https://www.w3schools.com/dsa/dsa_time_complexity.php
+technical,"What does RAM stand for?","Random Access Memory","Read Access Memory","Runtime Access Memory","Rapid Access Memory",1,w3schools,Computer Memory,https://www.w3schools.com/whatis/whatis_computer_memory.asp
+technical,"Which company developed the Windows operating system?","Apple","Microsoft","Google","IBM",2,w3schools,Windows OS,https://www.w3schools.com/whatis/whatis_windows.asp
+technical,"What does CPU stand for?","Central Processing Unit","Computer Processing Unit","Central Program Unit","Central Processor Unit",1,w3schools,CPU Explained,https://www.w3schools.com/whatis/whatis_cpu.asp
+technical,"What is the cloud?","Internet-based computing","Local storage","Physical server","Network cable",1,w3schools,Cloud Computing,https://www.w3schools.com/whatis/whatis_cloudcomputing.asp
+technical,"Which of the following is a cyber attack?","Phishing","DDoS","Man-in-the-Middle","All of the above",4,w3schools,Cyber Attacks,https://www.w3schools.com/cybersecurity/
+technical,"What is a firewall?","Network security system","Web browser","Database","Programming language",1,w3schools,Firewall Explained,https://www.w3schools.com/cybersecurity/cybersecurity_firewalls.php
+technical,"What does VPN stand for?","Virtual Private Network","Visual Private Network","Virtual Public Network","Virtual Protected Network",1,w3schools,VPN Explained,https://www.w3schools.com/cybersecurity/cybersecurity_vpn.php
+technical,"Which of the following is a social media platform?","Facebook","Twitter","Instagram","All of the above",4,w3schools,Social Media,https://www.w3schools.com/whatis/whatis_socialmedia.asp
+technical,"What does IoT stand for?","Internet of Things","Internet of Technology","Integration of Things","Internet on Things",1,w3schools,IoT Explained,https://www.w3schools.com/whatis/whatis_iot.asp
+technical,"Which company is known for search engine?","Google","Bing","Yahoo","All of the above",4,w3schools,Search Engines,https://www.w3schools.com/whatis/whatis_search_engine.asp
+technical,"What is AI?","Artificial Intelligence","Automated Intelligence","Advanced Intelligence","Applied Intelligence",1,w3schools,AI Explained,https://www.w3schools.com/whatis/whatis_ai.asp
+technical,"What does ML stand for?","Machine Learning","Markup Language","Meta Language","Memory Learning",1,w3schools,Machine Learning,https://www.w3schools.com/ai/
+technical,"Which programming language is best for data science?","Python","R","SQL","All of the above",4,w3schools,Data Science,https://www.w3schools.com/datascience/
+technical,"What is the difference between GET and POST in HTTP?","GET is faster, POST is slower","GET has body, POST has URL params","GET appends data to URL, POST sends in request body","GET is for forms, POST is for images",3,youtube,HTTP Methods,https://www.youtube.com/watch?v=GUJr3k3F1O8
+technical,"What is a closure in JavaScript?","A closed function","A function with access to outer function's scope","A private variable","A built-in object",2,youtube,JavaScript Closures,https://www.youtube.com/watch?v=1JsJx1x34c
+technical,"What is the purpose of the 'use strict' directive in JavaScript?","Enables strict parsing of JSON","Enables modern JavaScript features","Enforces stricter parsing and error handling","Disables deprecated features",3,w3schools,JS Use Strict,https://www.w3schools.com/js/js_strict.asp
+technical,"Explain the concept of hoisting in JavaScript","Moving declarations to the bottom","Moving declarations to the top","Variable initialization only","Function expression hoisting",2,youtube,JavaScript Hoisting,https://www.youtube.com/watch?v=EvfRXyKa_GI
+technical,"What is the event loop in JavaScript?","A loop that runs events","Handles asynchronous callbacks","An infinite loop","A timer function",2,youtube,Event Loop,https://www.youtube.com/watch?v=8aGhZQkoFbQ
+technical,"What is the difference between == and === in JavaScript?","No difference","== compares value, === compares value and type","== compares type, === compares value","== is for numbers only",2,w3schools,JS Comparison,https://www.w3schools.com/js/js_comparisons.asp
+technical,"What is a promise in JavaScript?","A guarantee to return data","An object representing eventual completion of async operation","A callback function","A synchronous operation",2,youtube,JavaScript Promises,https://www.youtube.com/watch?v=DHvZLI7Db8E
+technical,"What is the purpose of the 'this' keyword?","Refers to current object","Refers to global object","Refers to parent function","All of the above",1,w3schools,JS this Keyword,https://www.w3schools.com/js/js_this.asp
+technical,"Explain the difference between let, const, and var","No difference","var is function-scoped, let/const are block-scoped","let cannot be reassigned","const can be reassigned",2,w3schools,JS Let Const,https://www.w3schools.com/js/js_let.asp
+technical,"What is REST API?","Random API","Representational State Transfer API","Reliable State Transfer API","Rapid Execution API",2,w3schools,REST API,https://www.w3schools.com/whatis/whatis_restapi.asp
+technical,"What is normalization in databases?","Deleting duplicates","Organizing data to reduce redundancy","Adding more tables","Compressing data",2,w3schools,Database Normalization,https://www.w3schools.com/sql/sql_normalization.asp
+technical,"What is a trigger in SQL?","Automatically executes on table events","A manual query","A scheduled job","An index",1,w3schools,SQL Triggers,https://www.w3schools.com/sql/sql_triggers.asp
+technical,"What is the difference between clustered and non-clustered index?","Clustered sorts data, non-clustered doesn't","No difference","Clustered is faster","Non-clustered is default",1,w3schools,SQL Indexes,https://www.w3schools.com/sql/sql_create_index.asp
+technical,"What is a deadlock in databases?","Two processes waiting for each other","A crashed query","A locked table","A missing index",1,w3schools,SQL Deadlock,https://www.w3schools.com/sql/sql_deadlock.asp
+technical,"What is a view in SQL?","A virtual table based on query result","An image","A backup","A stored procedure",1,w3schools,SQL Views,https://www.w3schools.com/sql/sql_view.asp
+technical,"What is the difference between git merge and git rebase?","No difference","Merge creates commit, rebase rewrites history","Rebase is faster","Merge is safer",2,w3schools,Git Merge vs Rebase,https://www.w3schools.com/git/git_merge.asp
+technical,"What is the difference between monolithic and microservices?","Monolith is one app, microservices are separate","No difference","Microservices are slower","Monolith is newer",1,w3schools,Monolithic vs Microservices,https://www.w3schools.com/whatis/whatis_microservices.asp
+technical,"What is the difference between unit test and integration test?","No difference","Unit tests single component, integration tests multiple","Integration tests are faster","Unit tests need database",2,w3schools,Unit Testing,https://www.w3schools.com/whatis/whatis_unittesting.asp
+technical,"What is the difference between white box and black box testing?","White box tests internals, black box tests functionality","No difference","White box needs user","Black box needs code",1,w3schools,Software Testing,https://www.w3schools.com/whatis/whatis_software_testing.asp
+technical,"Give an example of a creational design pattern","Singleton","Observer","Facade","Strategy",1,w3schools,Design Patterns,https://www.w3schools.com/whatis/whatis_design_pattern.asp
+technical,"What is the Factory pattern?","Creates objects without specifying class","Creates databases","Creates tables","Creates indexes",1,w3schools,Factory Pattern,https://www.w3schools.com/java/java_factory_pattern.asp
+technical,"What is the difference between IPv4 and IPv6?","IPv4 32-bit, IPv6 128-bit","IPv6 is older","No difference","IPv4 has more addresses",1,w3schools,IPv4 vs IPv6,https://www.w3schools.com/whatis/whatis_ipv4_ipv6.asp
+technical,"What is a DNS server?","Converts domain names to IP addresses","Stores websites","Manages emails","Hosts databases",1,w3schools,DNS Explained,https://www.w3schools.com/whatis/whatis_dns.asp
+technical,"What is authentication vs authorization?","AuthN is identity, AuthZ is permissions","Both are same","AuthZ is identity","AuthN is permissions",1,w3schools,Authentication vs Authorization,https://www.w3schools.com/cybersecurity/cybersecurity_authentication_authorization.php
+softskills,"You are working on a team project and a teammate is struggling with their task. What do you do?","Ignore them","Do their work for them","Offer help and guidance","Complain to the manager",3,w3schools,Teamwork Skills,https://www.w3schools.com/softskills/teamwork.asp
+softskills,"How do you handle a tight deadline?","Panic","Work overtime alone","Prioritize tasks and communicate with team","Give up",3,w3schools,Time Management,https://www.w3schools.com/softskills/time_management.asp
+softskills,"A customer reports a bug right before product release. What is your response?","Ignore the bug","Blame the customer","Acknowledge and schedule fix","Pretend not to hear",3,w3schools,Customer Service,https://www.w3schools.com/softskills/customer_service.asp
+softskills,"How do you respond to constructive criticism?","Get defensive","Ignore it","Listen and improve","Argue back",3,w3schools,Receiving Feedback,https://www.w3schools.com/softskills/feedback.asp
+softskills,"Your manager assigns you a task you've never done before. What do you do?","Refuse to do it","Attempt without asking","Ask for guidance and learn","Complain to colleagues",3,w3schools,Learning Skills,https://www.w3schools.com/softskills/learning_skills.asp
+softskills,"A colleague takes credit for your work. How do you handle it?","Stay silent","Confront aggressively","Speak privately with your manager","Do the same to them",3,w3schools,Conflict Resolution,https://www.w3schools.com/softskills/conflict_resolution.asp
+softskills,"How do you prioritize multiple tasks?","Work on easiest first","Work on hardest first","Based on urgency and importance","Randomly choose",3,w3schools,Task Management,https://www.w3schools.com/softskills/time_management.asp
+softskills,"You make a mistake that affects the project. What do you do?","Hide it","Blame someone else","Take responsibility and fix it","Wait for someone to notice",3,w3schools,Accountability,https://www.w3schools.com/softskills/accountability.asp
+softskills,"How do you handle conflict with a coworker?","Avoid them","Argue publicly","Discuss privately and find solution","Complain to HR immediately",3,w3schools,Conflict Resolution,https://www.w3schools.com/softskills/conflict_resolution.asp
+softskills,"What is the best way to communicate technical issues to non-technical people?","Use technical jargon","Use simple analogies","Send a long email","Avoid explaining",2,w3schools,Communication Skills,https://www.w3schools.com/softskills/communication.asp
+softskills,"You notice a security vulnerability in the code. What do you do?","Ignore it","Fix it silently","Report it to the team lead","Exploit it",3,w3schools,Ethics,https://www.w3schools.com/softskills/workplace_ethics.asp
+softskills,"How do you handle stress at work?","Take frequent breaks","Practice deep breathing","Prioritize tasks","All of the above",4,w3schools,Stress Management,https://www.w3schools.com/softskills/stress_management.asp
+softskills,"What is the most important quality in a team member?","Reliability","Speed","Experience","Education",1,w3schools,Teamwork,https://www.w3schools.com/softskills/teamwork.asp
+softskills,"How do you handle a situation where you disagree with the project approach?","Stay silent","Argue aggressively","Present alternative solution professionally","Quit the project",3,w3schools,Leadership,https://www.w3schools.com/softskills/leadership.asp
+softskills,"What is active listening?","Hearing words","Waiting to speak","Understanding and responding thoughtfully","Taking notes",3,w3schools,Active Listening,https://www.w3schools.com/softskills/active_listening.asp
+softskills,"How do you build trust with your team?","Complete tasks on time","Be honest and transparent","Help others","All of the above",4,w3schools,Building Trust,https://www.w3schools.com/softskills/building_trust.asp
+softskills,"What would you do if you are overworked?","Burn out silently","Request help or reprioritization","Work 24/7","Quit immediately",2,w3schools,Work Life Balance,https://www.w3schools.com/softskills/work_life_balance.asp
+softskills,"How do you celebrate team success?","Take all credit","Share recognition with team","Ignore it","Take a day off",2,w3schools,Team Recognition,https://www.w3schools.com/softskills/team_recognition.asp
+softskills,"What is the best way to give feedback to a peer?","Publicly criticize","Send an angry email","Private, constructive conversation","Ignore the issue",3,w3schools,Giving Feedback,https://www.w3schools.com/softskills/feedback.asp
+softskills,"How do you adapt to a new technology or process?","Resist change","Learn quickly and ask questions","Wait for training","Avoid using it",2,w3schools,Adaptability,https://www.w3schools.com/softskills/adaptability.asp
+softskills,"What does empathy mean in the workplace?","Understanding others' feelings","Being sympathetic","Ignoring emotions","Staying professional",1,w3schools,Empathy,https://www.w3schools.com/softskills/empathy.asp
+softskills,"How do you handle an angry customer?","Argue back","Listen and apologize","Hang up","Blame the company",2,w3schools,Customer Service,https://www.w3schools.com/softskills/customer_service.asp
+softskills,"What is the best way to manage your time?","Make a to-do list","Prioritize tasks","Avoid multitasking","All of the above",4,w3schools,Time Management,https://www.w3schools.com/softskills/time_management.asp
+softskills,"How do you maintain work-life balance?","Work 24/7","Set boundaries and take breaks","Never take vacation","Check emails all night",2,w3schools,Work Life Balance,https://www.w3schools.com/softskills/work_life_balance.asp
+softskills,"What would you do if you see a colleague being bullied?","Ignore it","Join the bully","Report to manager","Laugh at them",3,w3schools,Workplace Ethics,https://www.w3schools.com/softskills/workplace_ethics.asp
+softskills,"How do you handle a situation where you don't know the answer?","Lie","Say 'I don't know, but I'll find out'","Guess","Avoid the question",2,w3schools,Problem Solving,https://www.w3schools.com/softskills/problem_solving.asp
+softskills,"What is the most effective leadership style?","Authoritarian","Democratic","Laissez-faire","Situational",4,w3schools,Leadership Styles,https://www.w3schools.com/softskills/leadership.asp
+softskills,"How do you motivate a demotivated team member?","Criticize them","Recognize their efforts and encourage","Ignore them","Replace them",2,w3schools,Employee Motivation,https://www.w3schools.com/softskills/employee_motivation.asp
+softskills,"What is the key to successful negotiation?","Winning at all costs","Finding win-win solution","Walking away","Aggressive demands",2,w3schools,Negotiation Skills,https://www.w3schools.com/softskills/negotiation.asp
+softskills,"How do you handle gossip in the workplace?","Participate","Spread more gossip","Avoid and redirect conversation","Report immediately",3,w3schools,Workplace Ethics,https://www.w3schools.com/softskills/workplace_ethics.asp
+softskills,"What is the most important soft skill for a manager?","Technical knowledge","Communication","Speed","Experience",2,w3schools,Management Skills,https://www.w3schools.com/softskills/management.asp
+softskills,"How do you respond to a missed deadline?","Make excuses","Apologize and provide solution","Blame others","Ignore it",2,w3schools,Accountability,https://www.w3schools.com/softskills/accountability.asp
+softskills,"What is the best way to ask for help?","Never ask","Ask clearly and respectfully","Demand help","Wait for offer",2,w3schools,Communication,https://www.w3schools.com/softskills/communication.asp
+softskills,"How do you handle a situation where you are interrupted constantly?","Stay silent","Politely ask to finish","Yell at them","Walk away",2,w3schools,Communication,https://www.w3schools.com/softskills/communication.asp
+softskills,"What is the most effective way to learn new skills?","Only formal training","Self-study and practice","Wait for promotion","Avoid learning",2,w3schools,Learning Skills,https://www.w3schools.com/softskills/learning_skills.asp
+softskills,"How do you respond to a rejected idea?","Give up","Get angry","Ask for feedback and improve","Blame others",3,w3schools,Resilience,https://www.w3schools.com/softskills/resilience.asp
+softskills,"What is the best way to build professional relationships?","Network genuinely","Use people for gain","Avoid socializing","Stay isolated",1,w3schools,Networking,https://www.w3schools.com/softskills/networking.asp
+softskills,"How do you handle a difficult decision?","Procrastinate","Analyze options and decide","Ask everyone","Flip a coin",2,w3schools,Decision Making,https://www.w3schools.com/softskills/decision_making.asp
+softskills,"What is the most important factor for career growth?","Hard work only","Luck","Continuous learning and adaptability","Degrees",3,w3schools,Career Growth,https://www.w3schools.com/softskills/career_growth.asp
+softskills,"How do you handle a situation where you are wrongly accused?","Stay silent","Yell at accuser","Present facts calmly","Quit",3,w3schools,Conflict Management,https://www.w3schools.com/softskills/conflict_management.asp
+softskills,"What is the best way to show leadership?","Give orders","Lead by example","Take credit","Avoid responsibility",2,w3schools,Leadership,https://www.w3schools.com/softskills/leadership.asp
+softskills,"How do you handle a team member who is not contributing?","Do their work","Confront privately and offer support","Ignore them","Report immediately",2,w3schools,Team Management,https://www.w3schools.com/softskills/team_management.asp
+softskills,"What is the most effective way to resolve a dispute?","Escalate immediately","Mediate and find common ground","Take sides","Avoid",2,w3schools,Conflict Resolution,https://www.w3schools.com/softskills/conflict_resolution.asp
+softskills,"How do you maintain positivity during challenges?","Focus on solutions","Complain","Give up","Blame circumstances",1,w3schools,Positive Attitude,https://www.w3schools.com/softskills/positive_attitude.asp
+softskills,"What is the best way to impress your manager?","Take initiative and deliver results","Flatter them","Work late always","Gossip",1,w3schools,Professionalism,https://www.w3schools.com/softskills/professionalism.asp
+softskills,"How do you handle a toxic coworker?","Engage in drama","Maintain professionalism and distance","Complain constantly","Fight back",2,w3schools,Workplace Relationships,https://www.w3schools.com/softskills/workplace_relationships.asp
+softskills,"What is the most important quality for career success?","Technical skills only","Soft skills only","Combination of both","Luck",3,w3schools,Career Success,https://www.w3schools.com/softskills/career_success.asp
+softskills,"How do you approach a performance review?","Get defensive","Be open to feedback and discuss growth","Argue every point","Skip it",2,w3schools,Performance Review,https://www.w3schools.com/softskills/performance_review.asp
+softskills,"What is the best way to build confidence?","Compare to others","Celebrate small wins","Avoid challenges","Wait for perfection",2,w3schools,Self Confidence,https://www.w3schools.com/softskills/self_confidence.asp
+softskills,"How do you handle success?","Stay humble and grateful","Brag about it","Ignore it","Take all credit",1,w3schools,Humility,https://www.w3schools.com/softskills/humility.asp
+softskills,"What is the most important lesson for a professional?","Always be right","Continuous improvement","Work harder than everyone","Follow orders",2,w3schools,Professional Growth,https://www.w3schools.com/softskills/professional_growth.asp
