@@ -1,12 +1,19 @@
 <?php
-include(__DIR__ . "/../includes/admin_auth.php");
+include("../includes/admin_auth.php");
 
-$id = intval($_GET['id']);
+// Check CSRF token
+if(!isset($_GET['csrf_token']) || $_GET['csrf_token'] !== $_SESSION['csrf_token']) {
+    die("Security verification failed.");
+}
 
-mysqli_query(
-$conn,
-"DELETE FROM questions WHERE id='$id'"
-);
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-header("Location: manage_questions.php");
+if($id > 0) {
+    $stmt = mysqli_prepare($conn, "DELETE FROM questions WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+}
+
+header("Location: manage_questions.php?msg=deleted");
 exit();
+?>

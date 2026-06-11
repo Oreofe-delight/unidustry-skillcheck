@@ -48,6 +48,7 @@ while($row = mysqli_fetch_assoc($result)){
 
 $percentage = ($score / $total) * 100;
 
+// ✅ ADDED: Insert into results with created_at
 mysqli_query($conn,"
 INSERT INTO results
 (
@@ -55,7 +56,8 @@ user_id,
 category,
 score,
 total_questions,
-percentage
+percentage,
+created_at        
 )
 VALUES
 (
@@ -63,7 +65,8 @@ VALUES
 '$category',
 '$score',
 '$total',
-'$percentage'
+'$percentage',
+NOW()               
 )
 ");
 
@@ -72,6 +75,6 @@ $_SESSION['total'] = $total;
 
 $_SESSION['recommendations'] = $recommendations;
 
-header("Location: results.php");
+header("Location: result.php");  // Note: changed from results.php to result.php
 exit();
 ?>

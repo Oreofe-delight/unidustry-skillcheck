@@ -1,0 +1,102 @@
+category,question,option1,option2,option3,option4,correct_answer
+technical,"What does HTML stand for?","Hyper Text Markup Language","Home Tool Markup Language","High Text Machine Language","Hyper Transfer Markup Language",1
+technical,"Which CSS property is used to change the text color of an element?","text-color","color","font-color","bgcolor",2
+technical,"What does PHP stand for?","Personal Home Page","Preprocessor","Hypertext Preprocessor","Programming Language",3
+technical,"Which SQL statement is used to extract data from a database?","SELECT","EXTRACT","GET","OPEN",1
+technical,"What does JavaScript use to declare a variable?","var","let","const","All of the above",4
+technical,"Which of the following is a valid way to comment in Python?","// comment","# comment","/* comment */","<!-- comment -->",2
+technical,"What does CSS stand for?","Creative Style Sheets","Computer Style Sheets","Cascading Style Sheets","Colorful Style Sheets",3
+technical,"Which tag is used to create a hyperlink in HTML?","<link>","<a>","<href>","<url>",2
+technical,"What does SQL stand for?","Structured Question Language","Structured Query Language","Simple Query Language","Standard Query Language",2
+technical,"Which operator is used for 'not equal to' in PHP?","!=","<>","!==","Both A and B",4
+technical,"What is the correct way to start a session in PHP?","session_start()","start_session()","session_begin()","begin_session()",1
+technical,"Which function is used to include a file in PHP?","include()","require()","Both A and B","import()",3
+technical,"What does AJAX stand for?","Asynchronous JavaScript and XML","Advanced JavaScript and XML","Asynchronous JSON and XML","Active JavaScript and XML",1
+technical,"Which method is used to send data to the server without reloading the page?","GET","POST","AJAX","FETCH",3
+technical,"What does API stand for?","Application Programming Interface","Application Program Interface","Advanced Programming Interface","Application Protocol Interface",1
+technical,"Which of the following is a NoSQL database?","MySQL","PostgreSQL","MongoDB","SQLite",3
+technical,"What is the default port for MySQL?","3306","5432","8080","80",1
+technical,"Which Git command is used to create a new branch?","git branch new-branch","git checkout -b new-branch","git create branch","Both A and B",4
+technical,"What does OOP stand for?","Object-Oriented Programming","Ordered Object Programming","Object-Oriented Protocol","Object Organization Programming",1
+technical,"Which principle is NOT part of OOP?","Inheritance","Polymorphism","Encapsulation","Compilation",4
+technical,"What is the output of 5 + '5' in JavaScript?","10","55","Error","Undefined",2
+technical,"Which HTML tag is used to display an image?","<img>","<image>","<src>","<pic>",1
+technical,"What does JSON stand for?","JavaScript Object Notation","Java Object Notation","JavaScript Oriented Notation","Java Script Object Notation",1
+technical,"Which HTTP method is used to retrieve data from a server?","POST","GET","PUT","DELETE",2
+technical,"What does CRUD stand for?","Create, Read, Update, Delete","Create, Retrieve, Update, Delete","Create, Read, Upload, Delete","Create, Read, Update, Drop",1
+technical,"Which of the following is a programming paradigm?","Procedural","Object-Oriented","Functional","All of the above",4
+technical,"What does IDE stand for?","Integrated Development Environment","Integrated Design Environment","Internal Development Environment","Integrated Data Environment",1
+technical,"Which of the following is a version control system?","Git","SVN","Mercurial","All of the above",4
+technical,"What does DNS stand for?","Domain Name System","Data Name System","Domain Network System","Digital Name System",1
+technical,"Which protocol is used for secure communication over the internet?","HTTP","FTP","HTTPS","SMTP",3
+technical,"What is the primary key in a database?","Unique identifier for a record","Foreign key reference","Index","Table name",1
+technical,"Which SQL clause is used to filter records?","WHERE","HAVING","FILTER","CONDITION",1
+technical,"What does JOIN do in SQL?","Combines rows from two tables","Deletes rows","Updates rows","Creates new table",1
+technical,"Which data structure uses LIFO (Last In First Out)?","Queue","Stack","Array","Linked List",2
+technical,"What is a primary key constraint?","Ensures unique values","Allows null values","Links two tables","Speeds up queries",1
+technical,"Which algorithm is used for sorting?","Bubble Sort","Quick Sort","Merge Sort","All of the above",4
+technical,"What is the time complexity of binary search?","O(n)","O(log n)","O(n²)","O(1)",2
+technical,"What does RAM stand for?","Random Access Memory","Read Access Memory","Runtime Access Memory","Rapid Access Memory",1
+technical,"Which company developed the Windows operating system?","Apple","Microsoft","Google","IBM",2
+technical,"What does CPU stand for?","Central Processing Unit","Computer Processing Unit","Central Program Unit","Central Processor Unit",1
+technical,"What is the cloud?","Internet-based computing","Local storage","Physical server","Network cable",1
+technical,"Which of the following is a cyber attack?","Phishing","DDoS","Man-in-the-Middle","All of the above",4
+technical,"What is a firewall?","Network security system","Web browser","Database","Programming language",1
+technical,"What does VPN stand for?","Virtual Private Network","Visual Private Network","Virtual Public Network","Virtual Protected Network",1
+technical,"Which of the following is a social media platform?","Facebook","Twitter","Instagram","All of the above",4
+technical,"What does IoT stand for?","Internet of Things","Internet of Technology","Integration of Things","Internet on Things",1
+technical,"Which company is known for search engine?","Google","Bing","Yahoo","All of the above",4
+technical,"What is AI?","Artificial Intelligence","Automated Intelligence","Advanced Intelligence","Applied Intelligence",1
+technical,"What does ML stand for?","Machine Learning","Markup Language","Meta Language","Memory Learning",1
+technical,"Which programming language is best for data science?","Python","R","SQL","All of the above",4
+softskills,"You are working on a team project and a teammate is struggling with their task. What do you do?","Ignore them","Do their work for them","Offer help and guidance","Complain to the manager",3
+softskills,"How do you handle a tight deadline?","Panic","Work overtime alone","Prioritize tasks and communicate with team","Give up",3
+softskills,"A customer reports a bug right before product release. What is your response?","Ignore the bug","Blame the customer","Acknowledge and schedule fix","Pretend not to hear",3
+softskills,"How do you respond to constructive criticism?","Get defensive","Ignore it","Listen and improve","Argue back",3
+softskills,"Your manager assigns you a task you've never done before. What do you do?","Refuse to do it","Attempt without asking","Ask for guidance and learn","Complain to colleagues",3
+softskills,"A colleague takes credit for your work. How do you handle it?","Stay silent","Confront aggressively","Speak privately with your manager","Do the same to them",3
+softskills,"How do you prioritize multiple tasks?","Work on easiest first","Work on hardest first","Based on urgency and importance","Randomly choose",3
+softskills,"You make a mistake that affects the project. What do you do?","Hide it","Blame someone else","Take responsibility and fix it","Wait for someone to notice",3
+softskills,"How do you handle conflict with a coworker?","Avoid them","Argue publicly","Discuss privately and find solution","Complain to HR immediately",3
+softskills,"What is the best way to communicate technical issues to non-technical people?","Use technical jargon","Use simple analogies","Send a long email","Avoid explaining",2
+softskills,"You notice a security vulnerability in the code. What do you do?","Ignore it","Fix it silently","Report it to the team lead","Exploit it",3
+softskills,"How do you handle stress at work?","Take frequent breaks","Practice deep breathing","Prioritize tasks","All of the above",4
+softskills,"What is the most important quality in a team member?","Reliability","Speed","Experience","Education",1
+softskills,"How do you handle a situation where you disagree with the project approach?","Stay silent","Argue aggressively","Present alternative solution professionally","Quit the project",3
+softskills,"What is active listening?","Hearing words","Waiting to speak","Understanding and responding thoughtfully","Taking notes",3
+softskills,"How do you build trust with your team?","Complete tasks on time","Be honest and transparent","Help others","All of the above",4
+softskills,"What would you do if you are overworked?","Burn out silently","Request help or reprioritization","Work 24/7","Quit immediately",2
+softskills,"How do you celebrate team success?","Take all credit","Share recognition with team","Ignore it","Take a day off",2
+softskills,"What is the best way to give feedback to a peer?","Publicly criticize","Send an angry email","Private, constructive conversation","Ignore the issue",3
+softskills,"How do you adapt to a new technology or process?","Resist change","Learn quickly and ask questions","Wait for training","Avoid using it",2
+softskills,"What does empathy mean in the workplace?","Understanding others' feelings","Being sympathetic","Ignoring emotions","Staying professional",1
+softskills,"How do you handle an angry customer?","Argue back","Listen and apologize","Hang up","Blame the company",2
+softskills,"What is the best way to manage your time?","Make a to-do list","Prioritize tasks","Avoid multitasking","All of the above",4
+softskills,"How do you maintain work-life balance?","Work 24/7","Set boundaries and take breaks","Never take vacation","Check emails all night",2
+softskills,"What would you do if you see a colleague being bullied?","Ignore it","Join the bully","Report to manager","Laugh at them",3
+softskills,"How do you handle a situation where you don't know the answer?","Lie","Say 'I don't know, but I'll find out'","Guess","Avoid the question",2
+softskills,"What is the most effective leadership style?","Authoritarian","Democratic","Laissez-faire","Situational",4
+softskills,"How do you motivate a demotivated team member?","Criticize them","Recognize their efforts and encourage","Ignore them","Replace them",2
+softskills,"What is the key to successful negotiation?","Winning at all costs","Finding win-win solution","Walking away","Aggressive demands",2
+softskills,"How do you handle gossip in the workplace?","Participate","Spread more gossip","Avoid and redirect conversation","Report immediately",3
+softskills,"What is the most important soft skill for a manager?","Technical knowledge","Communication","Speed","Experience",2
+softskills,"How do you respond to a missed deadline?","Make excuses","Apologize and provide solution","Blame others","Ignore it",2
+softskills,"What is the best way to ask for help?","Never ask","Ask clearly and respectfully","Demand help","Wait for offer",2
+softskills,"How do you handle a situation where you are interrupted constantly?","Stay silent","Politely ask to finish","Yell at them","Walk away",2
+softskills,"What is the most effective way to learn new skills?","Only formal training","Self-study and practice","Wait for promotion","Avoid learning",2
+softskills,"How do you respond to a rejected idea?","Give up","Get angry","Ask for feedback and improve","Blame others",3
+softskills,"What is the best way to build professional relationships?","Network genuinely","Use people for gain","Avoid socializing","Stay isolated",1
+softskills,"How do you handle a difficult decision?","Procrastinate","Analyze options and decide","Ask everyone","Flip a coin",2
+softskills,"What is the most important factor for career growth?","Hard work only","Luck","Continuous learning and adaptability","Degrees",3
+softskills,"How do you handle a situation where you are wrongly accused?","Stay silent","Yell at accuser","Present facts calmly","Quit",3
+softskills,"What is the best way to show leadership?","Give orders","Lead by example","Take credit","Avoid responsibility",2
+softskills,"How do you handle a team member who is not contributing?","Do their work","Confront privately and offer support","Ignore them","Report immediately",2
+softskills,"What is the most effective way to resolve a dispute?","Escalate immediately","Mediate and find common ground","Take sides","Avoid",2
+softskills,"How do you maintain positivity during challenges?","Focus on solutions","Complain","Give up","Blame circumstances",1
+softskills,"What is the best way to impress your manager?","Take initiative and deliver results","Flatter them","Work late always","Gossip",1
+softskills,"How do you handle a toxic coworker?","Engage in drama","Maintain professionalism and distance","Complain constantly","Fight back",2
+softskills,"What is the most important quality for career success?","Technical skills only","Soft skills only","Combination of both","Luck",3
+softskills,"How do you approach a performance review?","Get defensive","Be open to feedback and discuss growth","Argue every point","Skip it",2
+softskills,"What is the best way to build confidence?","Compare to others","Celebrate small wins","Avoid challenges","Wait for perfection",2
+softskills,"How do you handle success?","Stay humble and grateful","Brag about it","Ignore it","Take all credit",1
+softskills,"What is the most important lesson for a professional?","Always be right","Continuous improvement","Work harder than everyone","Follow orders",2
