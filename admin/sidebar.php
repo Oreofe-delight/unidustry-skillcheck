@@ -4,7 +4,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <aside class="sidebar">
     <div class="sidebar-logo text-center">
-        <img src="../assets/images/logo-icon.png" class="sidebar-img">
+        <img src="../assets/images/logoo.png" class="sidebar-img">
         <h4>Admin Panel</h4>
     </div>
     <div class="sidebar-links">

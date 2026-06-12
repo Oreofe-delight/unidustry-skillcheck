@@ -66,7 +66,7 @@ if($row = mysqli_fetch_assoc($avg_soft_result)) $avg_soft = round($row['avg_scor
     
     <aside class="sidebar">
         <div class="sidebar-logo text-center">
-            <img src="assets/images/logo-icon.png" class="sidebar-img">
+            <img src="assets/images/logoo.png" class="sidebar-img">
             <h4>Unidustry SkillCheck</h4>
         </div>
         <div class="sidebar-links">
