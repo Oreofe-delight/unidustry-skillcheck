@@ -1,0 +1,78 @@
+# Database files (contains sensitive data)
+*.sql
+*.sql.gz
+*.db
+*.db3
+
+# Configuration files with passwords
+includes/db.php
+includes/config.php
+.env
+.htaccess
+
+# User uploads
+uploads/profiles/
+uploads/temp/
+user_uploads/
+
+# Logs
+*.log
+error_log
+access_log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+project.properties
+project.xml
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Composer
+vendor/
+composer.lock
+
+# Node modules (if any)
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Compiled files
+*.class
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Package files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Local development files
+xampp/
+localhost/
+.htaccess.local
