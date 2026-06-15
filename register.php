@@ -35,12 +35,20 @@ if (isset($_POST['register'])) {
         $password_plain = $_POST['password'] ?? '';
         $confirm_password = $_POST['confirm_password'] ?? '';
         
-        // Validation
+        // Validation - ALL FIELDS REQUIRED
         $errors = [];
         if (empty($fullname)) $errors[] = "Full name is required";
         if (empty($email)) $errors[] = "Email is required";
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email format";
         if (empty($student_id)) $errors[] = "Student ID is required";
+        if (empty($phone)) $errors[] = "Phone number is required";
+        if (empty($gender)) $errors[] = "Gender is required";
+        if (empty($dob)) $errors[] = "Date of birth is required";
+        if (empty($institution)) $errors[] = "Institution is required";
+        if (empty($faculty)) $errors[] = "Faculty is required";
+        if (empty($department)) $errors[] = "Department is required";
+        if (empty($level)) $errors[] = "Level is required";
+        if (empty($skills_interest)) $errors[] = "Skills/Technical interests are required";
         if (empty($password_plain)) $errors[] = "Password is required";
         if (strlen($password_plain) < 8) $errors[] = "Password must be at least 8 characters";
         if ($password_plain !== $confirm_password) $errors[] = "Passwords do not match";
@@ -58,7 +66,7 @@ if (isset($_POST['register'])) {
                 $message = "User already exists with this Student ID or Email!";
             } else {
                 $password = password_hash($password_plain, PASSWORD_DEFAULT);
-                $role = 'student'; // Default role
+                $role = 'student';
                 
                 $stmt_insert = mysqli_prepare($conn, "
                     INSERT INTO users (fullname, email, student_id, phone, gender, dob, institution, faculty, department, level, skills_interest, password, role) 
@@ -115,6 +123,11 @@ if (isset($_POST['register'])) {
             border-radius: 2px;
             transition: all 0.3s;
         }
+        .required-field::after {
+            content: " *";
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -124,6 +137,7 @@ if (isset($_POST['register'])) {
             <img src="assets/images/logo-full.png" style="height: 70px;">
             <h3 class="mt-3">Create Account</h3>
             <p class="text-muted">Join Unidustry SkillCheck to assess your skills</p>
+            <p class="text-danger small">* All fields are required</p>
         </div>
         
         <?php if($message != ""){ ?>
@@ -139,24 +153,24 @@ if (isset($_POST['register'])) {
             
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Full Name *</label>
+                    <label class="form-label required-field">Full Name</label>
                     <input type="text" name="fullname" class="form-control" placeholder="Enter your full name" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Email Address *</label>
+                    <label class="form-label required-field">Email Address</label>
                     <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Student ID *</label>
+                    <label class="form-label required-field">Student ID</label>
                     <input type="text" name="student_id" class="form-control" placeholder="e.g., 2020/XXXXXX" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Phone Number</label>
-                    <input type="tel" name="phone" class="form-control" placeholder="e.g., 080XXXXXXXX">
+                    <label class="form-label required-field">Phone Number</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="e.g., 080XXXXXXXX" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Gender</label>
-                    <select name="gender" class="form-select">
+                    <label class="form-label required-field">Gender</label>
+                    <select name="gender" class="form-select" required>
                         <option value="">Select Gender</option>
                         <option>Male</option>
                         <option>Female</option>
@@ -164,24 +178,24 @@ if (isset($_POST['register'])) {
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Date of Birth</label>
-                    <input type="date" name="dob" class="form-control">
+                    <label class="form-label required-field">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Institution</label>
-                    <input type="text" name="institution" class="form-control" placeholder="University of Ilorin">
+                    <label class="form-label required-field">Institution</label>
+                    <input type="text" name="institution" class="form-control" placeholder="University of Ilorin" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Faculty</label>
-                    <input type="text" name="faculty" class="form-control" placeholder="Communication and Information Sciences">
+                    <label class="form-label required-field">Faculty</label>
+                    <input type="text" name="faculty" class="form-control" placeholder="Communication and Information Sciences" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Department</label>
-                    <input type="text" name="department" class="form-control" placeholder="Computer Science">
+                    <label class="form-label required-field">Department</label>
+                    <input type="text" name="department" class="form-control" placeholder="Computer Science" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Level</label>
-                    <select name="level" class="form-select">
+                    <label class="form-label required-field">Level</label>
+                    <select name="level" class="form-select" required>
                         <option value="">Select Level</option>
                         <option>100 Level</option>
                         <option>200 Level</option>
@@ -191,23 +205,23 @@ if (isset($_POST['register'])) {
                     </select>
                 </div>
                 <div class="col-12 mb-3">
-                    <label class="form-label">Skills / Tech Interests</label>
-                    <textarea name="skills_interest" class="form-control" rows="2" placeholder="e.g., PHP, Python, JavaScript, Database Management"></textarea>
+                    <label class="form-label required-field">Skills / Tech Interests</label>
+                    <textarea name="skills_interest" class="form-control" rows="2" placeholder="e.g., PHP, Python, JavaScript, Database Management" required></textarea>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Password *</label>
+                    <label class="form-label required-field">Password</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="Minimum 8 characters" required>
                     <div class="password-strength" id="passwordStrength"></div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Confirm Password *</label>
+                    <label class="form-label required-field">Confirm Password</label>
                     <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Re-enter password" required>
                 </div>
                 <div class="col-12 mb-3">
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="termsCheck" required>
                         <label class="form-check-label" for="termsCheck">
-                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                            I agree to the <a href="terms.php" target="_blank">Terms and Conditions</a>
                         </label>
                     </div>
                 </div>
@@ -264,7 +278,7 @@ document.getElementById('registerForm')?.addEventListener('submit', function(e) 
     }
     if(!terms) {
         e.preventDefault();
-        alert('Please agree to the Terms of Service');
+        alert('Please agree to the Terms and Conditions');
         return false;
     }
     return true;

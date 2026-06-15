@@ -14,7 +14,7 @@ if (empty($_SESSION['csrf_token'])) {
 include("includes/db.php");
 
 $message = "";
-$message_type = "danger"; // danger, success, warning, info
+$message_type = "danger";
 
 if(isset($_POST['login'])){
     
@@ -29,8 +29,9 @@ if(isset($_POST['login'])){
         if(empty($email_or_id) || empty($password)) {
             $message = "Please enter both email/ID and password.";
         } else {
-            // Use prepared statement to prevent SQL injection
-            $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE email = ? OR student_id = ?");
+            // Use prepared statement with case-insensitive matching for student_id
+            // This handles different ID formats from different institutions
+            $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE email = ? OR LOWER(student_id) = LOWER(?)");
             mysqli_stmt_bind_param($stmt, "ss", $email_or_id, $email_or_id);
             mysqli_stmt_execute($stmt);
             $query = mysqli_stmt_get_result($stmt);
@@ -58,6 +59,7 @@ if(isset($_POST['login'])){
                     $_SESSION['role'] = $user['role'];
                     $_SESSION['fullname'] = $user['fullname'];
                     $_SESSION['email'] = $user['email'];
+                    $_SESSION['student_id'] = $user['student_id'];
                     $_SESSION['login_time'] = time(); 
                     
                     // Handle "Remember Me"
@@ -92,7 +94,7 @@ if(isset($_POST['login'])){
                     mysqli_stmt_execute($update_stmt);
                 }
             } else {
-                $message = "Account not found. Please check your email/ID or register.";
+                $message = "Account not found. Please check your Email/Student ID or register.";
                 $message_type = "warning";
             }
         }
@@ -107,15 +109,11 @@ if(isset($_POST['login'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Computing Skill Assessment System</title>
     
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
     
     <style>
-        /* Additional inline styles for auth-card if not in main CSS */
         .auth-card {
             max-width: 450px;
             width: 100%;
@@ -140,6 +138,28 @@ if(isset($_POST['login'])){
             border-color: #6c63ff;
             box-shadow: none;
         }
+        
+        .btn-custom {
+            background: linear-gradient(90deg, #4e54c8, #6c63ff);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 10px;
+        }
+        
+        .btn-custom:hover {
+            opacity: 0.9;
+            color: white;
+        }
+        
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        }
     </style>
 </head>
 <body>
@@ -154,7 +174,7 @@ if(isset($_POST['login'])){
             <h2 class="mt-3 fw-bold" style="color: #4e54c8;">
                 Welcome Back
             </h2>
-            <p class="text-muted">Login to continue your skill assessment</p>
+            <p class="text-muted">Login with your Email or Student ID</p>
         </div>
         
         <?php if($message != ""){ ?>
@@ -177,11 +197,11 @@ if(isset($_POST['login'])){
                     <input type="text"
                            name="email_or_id"
                            class="form-control form-control-with-icon"
-                           placeholder="Email or Student Id"
+                           placeholder="Email or Student ID"
                            value="<?php echo isset($_POST['email_or_id']) ? h($_POST['email_or_id']) : ''; ?>"
                            required>
                 </div>
-                <small class="text-muted">Enter your registered email address or student ID</small>
+                <small class="text-muted">Enter your registered email address OR Student ID</small>
             </div>
             
             <div class="mb-3">
@@ -238,7 +258,6 @@ if(isset($_POST['login'])){
     </div>
 </div>
 
-<!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
@@ -262,35 +281,20 @@ if(isset($_POST['login'])){
         
         if(emailInput.value.trim() === '') {
             e.preventDefault();
-            showAlert('Please enter your email or student ID', 'danger');
+            alert('Please enter your email or student ID');
             emailInput.focus();
             return false;
         }
         
         if(passwordInput.value === '') {
             e.preventDefault();
-            showAlert('Please enter your password', 'danger');
+            alert('Please enter your password');
             passwordInput.focus();
             return false;
         }
         
         return true;
     });
-    
-    function showAlert(message, type) {
-        const alertDiv = document.createElement('div');
-        alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-        alertDiv.innerHTML = `
-            <i class="fas fa-${type === 'danger' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        `;
-        const container = document.querySelector('.auth-card');
-        const form = document.querySelector('form');
-        container.insertBefore(alertDiv, form);
-        
-        setTimeout(() => alertDiv.remove(), 5000);
-    }
 </script>
 
 </body>
